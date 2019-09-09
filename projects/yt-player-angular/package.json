@@ -1,0 +1,12 @@
+{
+  "name": "yt-player-angular",
+  "version": "0.0.6",
+  "peerDependencies": {
+    "@angular/common": "^8.2.0",
+    "@angular/core": "^8.2.0",
+    "rxjs": "~6.4.0",
+    "yt-player": "~3.1.1"
+  },
+  "license": "MIT",
+  "keywords": ["youtube", "youtube player", "youtube player angular", "youtube angular", "yt player", "yt player angular"]
+}
