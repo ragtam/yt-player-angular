@@ -11,7 +11,7 @@ import { PlayerState } from './player-state';
 export class YtPlayerService {
 
   public get error$(): Observable<string> { return this.eventsRegistry.error$; }
-  public get unplayable(): Observable<string> { return this.eventsRegistry.unplayable$; }
+  public get unplayable$(): Observable<string> { return this.eventsRegistry.unplayable$; }
   public get timeUpdate$(): Observable<number> { return this.eventsRegistry.timeUpdate$; }
   public get unstarted$(): Observable<void> { return this.eventsRegistry.unstarted$; }
   public get ended$(): Observable<void> { return this.eventsRegistry.ended$; }
@@ -21,10 +21,11 @@ export class YtPlayerService {
   public get cued$(): Observable<void> { return this.eventsRegistry.cued$; }
   public get playbackQualityChange$(): Observable<PlaybackQuality> { return this.eventsRegistry.playbackQualityChange$; }
   public get playbackRateChange$(): Observable<number> { return this.eventsRegistry.playbackRateChange$; }
+
   public get destroyed(): boolean { return this.player.destroyed; }
   public get videoId(): string { return this.player.videoId; }
 
-  private get player(): YtPlayer { this.validatePlayer(); return this.ytPlayer; }
+  private get player(): YtPlayer { return this.ytPlayer; }
   private set player(value: YtPlayer) { this.ytPlayer = value; }
 
   private ytPlayer: YtPlayer;
@@ -98,11 +99,11 @@ export class YtPlayerService {
   }
 ​
   public getAvailablePlaybackRates(): number[] {
-    return this.getAvailablePlaybackRates();
+    return this.player.getAvailablePlaybackRates();
   }
 
   public getDuration(): number {
-    return this.getDuration();
+    return this.player.getDuration();
   }
 ​
   public getProgress(): number {
@@ -120,11 +121,5 @@ export class YtPlayerService {
   private setUpPlayer(htmlId: string, playerOptions?: PlayerOptions): void {
     this.playerOptions = playerOptions;
     this.player = new YtPlayer(htmlId, playerOptions);
-  }
-
-  private validatePlayer(): void {
-    if (!this.player) {
-      throw new Error('Player has not been initialized');
-    }
   }
 }
