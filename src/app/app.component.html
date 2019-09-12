@@ -1,19 +1,18 @@
-<yt-player [videoId]="'57dGINi4YzI'" [options]="playerOptions"></yt-player>
 
-<button (click)="play()">play</button>
-<button (click)="pause()">pause</button>
-<button (click)="stop()">stop</button>
-<button (click)="getCurrentTime()">get current time</button>
-<button (click)="seek(10)">seek 10s</button>
-<button (click)="setVolume(50)">set volume to 50</button>
-<button (click)="getVolume()">get volume</button>
-<button (click)="mute()">mute</button>
-<button (click)="unMute()">unMute</button>
-<button (click)="isMuted()">is muted</button>
-<button (click)="setSize(100, 100)">set size 100 x 100</button>
-<button (click)="setPlaybackRate(0.5)">set playback rate to 360</button>
-<button (click)="getPlaybackRate()">get playback rate</button>
-<button (click)="getAvailablePlaybackRates()">get available playback rates</button>
-<button (click)="getDuration()">get duration</button>
-<button (click)="getProgress()">get progress</button>
-<button (click)="getState()">get state</button>
+<div class="container">
+    <h1>Yt-Player-Angular</h1>
+    <p>This is a demo page of <a href="https://www.npmjs.com/package/yt-player-angular">yt-player-angular</a> package. Below there is video and buttons to control it. Streams produced by the package and method results are logged in developer console.</p>
+    <hr>
+
+    <div class="d-flex justify-content-center">
+        <yt-player [videoId]="'57dGINi4YzI'" [options]="playerOptions"></yt-player>
+    </div>
+    
+    <hr>
+    <h3>Methods</h3>
+    <div class="row">
+        <div *ngFor="let am of apiMethods" class="mb-1 col-xs-6 col-sm-3">
+            <button class="btn btn-light btn-block" (click)="am.action()">{{am.text}}</button>
+        </div>
+    </div>
+</div>

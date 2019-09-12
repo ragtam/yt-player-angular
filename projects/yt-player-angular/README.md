@@ -59,7 +59,7 @@ Selector 'yt-player' accepts two input properties (first one is mandatory, secon
 - [options]
 ```
 
-To specify options ReportOptions interface can be used. It contains following properties:
+To specify options PlayerOptions interface can be used. It contains following properties:
 ```
 - width?: number;
 - heiht?: number;

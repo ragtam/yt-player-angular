@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build-lib-watch": "ng build yt-player-angular --watch", 
+    "build-lib-watch": "ng build yt-player-angular --watch",
     "build": "ng build",
     "test": "ng test",
     "test-lib": "ng test yt-player-angular",
@@ -21,6 +21,7 @@
     "@angular/platform-browser": "~8.2.0",
     "@angular/platform-browser-dynamic": "~8.2.0",
     "@angular/router": "~8.2.0",
+    "bootstrap": "^4.3.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "yt-player": "^3.1.1",
