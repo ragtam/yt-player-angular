@@ -1,27 +1,115 @@
-# Looptube
+# Yt-Player-Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.0.
+This package is an Angular wrapper for [yt-player](https://www.npmjs.com/package/yt-player), YouTube Player API.
 
-## Development server
+Versions aligned with yt-player package:
+- yt-player-angular@3.1.* works with yt-player@3.1.*
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Go <a href="https://ragtam.github.io/yt-player-angular/">there</a> to see the demo.
 
-## Code scaffolding
+## Install
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+First, you need to install **yt-player** from NPM:
+```
+npm install yt-player
+```
 
-## Build
+Then do the same for **yt-player-angular**:
+```
+npm install yt-player-angular
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Usage
 
-## Running unit tests
+Add YtPlayerAngularModule to `imports` array in your app.module.ts:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+import { YtPlayerAngularModule } from 'yt-player-angular';
 
-## Running end-to-end tests
+@NgModule({
+  imports: [
+    YtPlayerAngularModule
+  ]
+...
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Go to app.component.ts (or wherever you want to use the package) and add next `import` at the top of the file:
 
-## Further help
+```
+import { YtPlayerComponent, YtPlayerService, PlayerOptions } from 'yt-player-angular';
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+inject YtPlayerService in the constructor:
+
+```
+constructor( private ytPlayerService: YtPlayerService ) { }
+```
+
+Then add yt player angular selector `yt-player` to AppComponent's template (app.component.html):
+
+```
+<yt-player [videoId]="'57dGINi4YzI'"></yt-player>
+```
+
+Input property 'videoId' accepts the id of the video you want to play.
+
+## API
+
+Selector 'yt-player' accepts two input properties (first one is mandatory, second optional):
+```
+- [videoId]
+- [options]
+```
+
+To specify options PlayerOptions interface can be used. It contains following properties:
+```
+- width?: number;
+- heiht?: number;
+- autoplay?: boolean;
+- captions?: boolean;
+- controls?: boolean;
+- keyboard?: boolean;
+- fullscreen?: boolean;
+- annotations?: boolean;
+- modestBranding?: boolean;
+- related?: boolean;
+- info?: boolean;
+- timeupdateFrequency?: number;
+```
+
+YtPlayerService`s methods:
+```
+- play(): void
+- pause(): void
+- stop(): void
+- getCurrentTime(): number
+- seek(seconds: number): void
+- setVolume(value: number): void
+- getVolume(): number
+- mute(): void
+- unMute(): void
+- isMuted(): boolean
+- setSize(width: number, height: number): void
+- setPlaybackRate(rate: number): void
+- getPlaybackRate(): number
+- getAvailablePlaybackRates(): number[]
+- getDuration(): number
+- ​getProgress(): number
+- ​getState(): PlayerState
+```
+
+YtPlayerService`s streams:
+```
+- timeUpdate$: Observable<number>
+- error$: Observable<string>
+- unplayable$: Observable<string>
+- timeUpdate$: Observable<number>}
+- unstarted$: Observable<void>
+- ended$: Observable<void>
+- playing$: Observable<void>
+- paused$: Observable<void>
+- buffering$: Observable<void>
+- cued$: Observable<void>
+- playbackQualityChange$: Observable<PlaybackQuality>
+- playbackRateChange$: Observable<number>
+```

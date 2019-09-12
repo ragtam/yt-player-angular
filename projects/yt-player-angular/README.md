@@ -5,6 +5,8 @@ This package is an Angular wrapper for [yt-player](https://www.npmjs.com/package
 Versions aligned with yt-player package:
 - yt-player-angular@3.1.* works with yt-player@3.1.*
 
+Go <a href="https://ragtam.github.io/yt-player-angular/">there</a> to see the demo.
+
 ## Install
 
 First, you need to install **yt-player** from NPM:

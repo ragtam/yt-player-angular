@@ -5,12 +5,11 @@
     "ng": "ng",
     "start": "ng serve",
     "build-lib-watch": "ng build yt-player-angular --watch",
-    "build": "ng build",
     "test": "ng test",
     "test-lib": "ng test yt-player-angular",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "publish": "ng build --output-path docs --prod --base-href https://ragtam.github.io/yt-player-angular/"
+    "build": "ng build --output-path docs --prod --base-href https://ragtam.github.io/yt-player-angular/"
   },
   "private": true,
   "dependencies": {
