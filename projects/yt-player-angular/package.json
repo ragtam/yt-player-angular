@@ -1,14 +1,12 @@
 {
   "name": "yt-player-angular",
-  "version": "3.4.0",
-  "devDependencies": {
+  "version": "3.4.1",
+  "peerDependencies": {
+    "@angular/common": "^8.2.0",
+    "@angular/core": "^8.2.0",
     "yt-player": "~3.4.0",
     "events": "3.0.0",
     "rxjs": "~6.4.0"
-  },
-  "peerDependencies": {
-    "@angular/common": "^8.2.0",
-    "@angular/core": "^8.2.0"
   },
   "homepage": "https://github.com/ragtam/yt-player-angular",
   "repository": {

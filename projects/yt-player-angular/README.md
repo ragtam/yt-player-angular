@@ -53,17 +53,17 @@ Then add yt player angular selector `yt-player` to AppComponent's template (app.
 <yt-player [videoId]="'ut_igW6OOtE'"></yt-player>
 ```
 
-Input property 'videoId' accepts the id of the video you want to play.
+Input property `videoId` accepts the id of the video you want to play.
 
 ## API
 
-Selector 'yt-player' accepts two input properties (first one is mandatory, second optional):
+Selector `yt-player` accepts two input properties (first one is mandatory, second optional):
 ```
 - [videoId]
 - [options]
 ```
 
-To specify options PlayerOptions interface can be used. It contains following properties:
+To specify `options`, `PlayerOptions` interface can be used. It contains following properties:
 ```
 - width?: number;
 - heiht?: number;
