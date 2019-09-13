@@ -1,6 +1,6 @@
 export interface PlayerOptions {
     width?: number;
-    heiht?: number;
+    height?: number;
     autoplay?: boolean;
     captions?: boolean;
     controls?: boolean;
@@ -11,4 +11,5 @@ export interface PlayerOptions {
     related?: boolean;
     info?: boolean;
     timeupdateFrequency?: number;
+    playsInline?: boolean;
 }

@@ -2,7 +2,7 @@ import * as YtPlayer from 'yt-player';
 import { Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { YtPlayerFasadeModule } from '../yt-player-fasade.module';
-import { PlaybackQuality } from '../playback-quality';
+import { PlaybackQuality } from '../models/playback-quality';
 
 @Injectable({ providedIn: YtPlayerFasadeModule })
 export class EventsRegistry {

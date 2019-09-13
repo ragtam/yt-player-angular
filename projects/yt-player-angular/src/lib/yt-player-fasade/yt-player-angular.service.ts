@@ -4,11 +4,13 @@ import { Observable, Subject } from 'rxjs';
 import { PlayerOptions } from '../player-options';
 import { YtPlayerFasadeModule } from './yt-player-fasade.module';
 import { EventsRegistry } from './events-registry/events-registry';
-import { PlaybackQuality } from './playback-quality';
-import { PlayerState } from './player-state';
+import { PlaybackQuality } from './models/playback-quality';
+import { PlayerState } from './models/player-state';
+import { PlayerMethods } from './models/player-methods';
+import { PlayerStreams } from './models/player-streams';
 
 @Injectable({ providedIn: YtPlayerFasadeModule })
-export class YtPlayerService {
+export class YtPlayerService implements PlayerMethods, PlayerStreams {
 
   public get error$(): Observable<string> { return this.eventsRegistry.error$; }
   public get unplayable$(): Observable<string> { return this.eventsRegistry.unplayable$; }
@@ -55,10 +57,6 @@ export class YtPlayerService {
     this.player.stop();
   }
 
-  public getCurrentTime(): number {
-    return this.player.getCurrentTime();
-  }
-
   public seek(seconds: number): void {
     this.player.seek(seconds);
   }
@@ -67,7 +65,7 @@ export class YtPlayerService {
     if (value > 100) {
       console.warn(`Provided value ${value} exceeds max value. 100 used instead`);
     }
-    this.player.setVolume();
+    this.player.setVolume(value);
   }
 
   public getVolume(): number {
@@ -75,7 +73,7 @@ export class YtPlayerService {
   }
 
   public mute(): void {
-    this.player.getVolume();
+    this.player.mute();
   }
 ​
   public unMute(): void {
@@ -93,6 +91,10 @@ export class YtPlayerService {
   public setPlaybackRate(rate: number): void {
     this.player.setPlaybackRate(rate);
   }
+
+  public setPlaybackQuality(sugestedQuality: PlaybackQuality): void {
+    this.player.setPlaybackQuality(sugestedQuality);
+  }
 ​
   public getPlaybackRate(): number {
     return this.player.getPlaybackRate();
@@ -106,12 +108,16 @@ export class YtPlayerService {
     return this.player.getDuration();
   }
 ​
-  public getProgress(): number {
+  public getBufferingProgress(): number {
     return this.player.getProgress();
   }
 ​
   public getState(): PlayerState {
     return this.player.getState();
+  }
+
+  public getCurrentTime(): number {
+    return this.player.getCurrentTime();
   }
 ​​
   public destroy(): void {

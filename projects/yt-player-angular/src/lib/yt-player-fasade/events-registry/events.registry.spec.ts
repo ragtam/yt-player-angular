@@ -1,6 +1,6 @@
 import { EventsRegistry } from './events-registry';
 import { TestBed } from '@angular/core/testing';
-import { PlaybackQuality } from '../playback-quality';
+import { PlaybackQuality } from '../models/playback-quality';
 
 describe('EventsRegistry', () => {
     let service: EventsRegistry;

@@ -1,8 +1,9 @@
 export enum PlaybackQuality {
-    Small = 'smal',
+    Small = 'small',
     Medium = 'medium',
     Large = 'large',
     Hd720 = 'hd720',
     Hd1080 = 'hd1080',
-    HighRes = 'highres'
+    HighRes = 'highres',
+    Default = 'default'
 }

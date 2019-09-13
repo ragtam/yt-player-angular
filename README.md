@@ -3,9 +3,11 @@
 This package is an Angular wrapper for [yt-player](https://www.npmjs.com/package/yt-player), YouTube Player API.
 
 Versions aligned with yt-player package:
-- yt-player-angular@3.1.* works with yt-player@3.1.*
+- yt-player-angular@3.4.* works with yt-player@3.4.*
 
-Go <a href="https://ragtam.github.io/yt-player-angular/">there</a> to see the demo.
+## Demo
+
+Go <a href="https://ragtam.github.io/yt-player-angular/">there</a> to see it working.
 
 ## Install
 
@@ -48,7 +50,7 @@ constructor( private ytPlayerService: YtPlayerService ) { }
 Then add yt player angular selector `yt-player` to AppComponent's template (app.component.html):
 
 ```
-<yt-player [videoId]="'57dGINi4YzI'"></yt-player>
+<yt-player [videoId]="'ut_igW6OOtE'"></yt-player>
 ```
 
 Input property 'videoId' accepts the id of the video you want to play.
@@ -75,6 +77,7 @@ To specify options PlayerOptions interface can be used. It contains following pr
 - related?: boolean;
 - info?: boolean;
 - timeupdateFrequency?: number;
+- playsInline?: boolean;
 ```
 
 YtPlayerService`s methods:
@@ -91,10 +94,11 @@ YtPlayerService`s methods:
 - isMuted(): boolean
 - setSize(width: number, height: number): void
 - setPlaybackRate(rate: number): void
+- setPlaybackQuality(sugestedQuality: PlaybackQuality): void
 - getPlaybackRate(): number
 - getAvailablePlaybackRates(): number[]
 - getDuration(): number
-- ​getProgress(): number
+- getBufferingProgress(): number
 - ​getState(): PlayerState
 ```
 

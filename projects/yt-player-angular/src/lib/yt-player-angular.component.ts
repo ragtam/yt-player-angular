@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { YtPlayerService } from './yt-player-fasade/yt-player-angular.service';
 import { IdGeneratorService } from './utils/id-generator.service';
 import { QueueService } from './utils/queue.service';
@@ -8,15 +8,14 @@ import { PlayerOptions } from './player-options';
   selector: 'yt-player',
   template: `
     <div #ytHtmlElementHook></div>
-  `,
-  styles: []
+  `
 })
-export class YtPlayerComponent implements OnChanges, OnInit {
+export class YtPlayerComponent implements OnChanges, OnInit, OnDestroy {
 
   @Input() public videoId: string;
   @Input() public options: PlayerOptions;
 
-  @ViewChild('ytHtmlElementHook', { static: true }) ytHtmlElementHook: ElementRef;
+  @ViewChild('ytHtmlElementHook', { static: true }) private ytHtmlElementHook: ElementRef;
 
   constructor(
     private ytPlayerService: YtPlayerService,
@@ -40,6 +39,10 @@ export class YtPlayerComponent implements OnChanges, OnInit {
     } else {
       this.enqueuePlayerInitialization();
     }
+  }
+
+  public ngOnDestroy(): void {
+    this.ytPlayerService.destroy();
   }
 
   private setUpElementRefId(): void {

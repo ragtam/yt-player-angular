@@ -1,15 +1,21 @@
 {
   "name": "yt-player-angular",
-  "version": "3.1.2",
+  "version": "3.4.0",
+  "devDependencies": {
+    "yt-player": "~3.4.0",
+    "events": "3.0.0",
+    "rxjs": "~6.4.0"
+  },
   "peerDependencies": {
     "@angular/common": "^8.2.0",
     "@angular/core": "^8.2.0"
   },
-  "devDependencies": {
-    "rxjs": "~6.4.0",
-    "yt-player": "~3.1.1",
-    "events": "3.0.0"
+  "homepage": "https://github.com/ragtam/yt-player-angular",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ragtam/yt-player-angular.git"
   },
   "license": "MIT",
+  "description": "YouTube player for Angular",
   "keywords": ["youtube", "youtube player", "youtube player angular", "youtube angular", "yt player", "yt player angular"]
 }

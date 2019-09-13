@@ -5,13 +5,27 @@
     <hr>
 
     <div class="d-flex justify-content-center">
-        <yt-player [videoId]="'57dGINi4YzI'" [options]="playerOptions"></yt-player>
+        <div class="flex-column">
+                <yt-player [videoId]="videoId" [options]="playerOptions"></yt-player>
+                <form [formGroup]="videoIdForm" (ngSubmit)="onSubmit(videoIdForm)">
+                    <div class="input-group">
+                        <div class="input-group-append">
+                            <span class="input-group-text">Youtube Video Id</span>
+                        </div>
+                        <input type="text" formControlName="id" class="form-control">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary">Load</button>
+                        </div>
+                    </div>
+                    <small *ngIf="videoIdForm.get('id') && videoIdForm.get('id').errors" class="text-danger">Put something there</small>
+                </form>
+        </div>
     </div>
     
     <hr>
     <h3>Methods</h3>
     <div class="row">
-        <div *ngFor="let am of apiMethods" class="mb-1 col-xs-6 col-sm-3">
+        <div *ngFor="let am of apiMethods" class="mb-1 col-xs-6 col-sm-4">
             <button class="btn btn-light btn-block" (click)="am.action()">{{am.text}}</button>
         </div>
     </div>
