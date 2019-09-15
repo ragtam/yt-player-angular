@@ -1,5 +1,5 @@
-import { Component, OnInit, NgZone, ViewChild } from '@angular/core';
-import { YtPlayerService, PlayerOptions, PlaybackQuality, YtPlayerComponent } from 'yt-player-angular';
+import { Component, OnInit } from '@angular/core';
+import { YtPlayerService, PlayerOptions, PlaybackQuality, StateChange, StateType } from 'yt-player-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -39,6 +39,10 @@ export class AppComponent implements OnInit {
     { action: () => console.log('getState()', this.ytPlayerService.getState()), text: 'getState()' }
   ];
 
+  public playerOptionsBooleanProps = [
+    { propertyName: 'autoplay', value: this.playerOptions.autoplay }
+  ];
+
   constructor(
     private ytPlayerService: YtPlayerService,
     private fb: FormBuilder
@@ -55,16 +59,12 @@ export class AppComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.ytPlayerService.timeUpdate$.subscribe(res => console.log('timeUpdate$', res));
-    this.ytPlayerService.error$.subscribe(err => console.log('err$', err));
-    this.ytPlayerService.unplayable$.subscribe(res => console.log('unplayable$', res));
-    this.ytPlayerService.unstarted$.subscribe(() => console.log('unstarted$'));
-    this.ytPlayerService.ended$.subscribe(() => console.log('ended$'));
-    this.ytPlayerService.playing$.subscribe(() => console.log('playing$'));
-    this.ytPlayerService.paused$.subscribe(() => console.log('paused$'));
-    this.ytPlayerService.buffering$.subscribe(() => console.log('buffering$'));
-    this.ytPlayerService.cued$.subscribe(() => console.log('cued$'));
-    this.ytPlayerService.playbackQualityChange$.subscribe(q => console.log('playbackQualityChange$', q));
-    this.ytPlayerService.playbackRateChange$.subscribe(res => console.log('playbackRateChange$', res));
+    // this.ytPlayerService.stateChange$.subscribe( (stateChange: StateChange) => {
+    //   console.log( StateType[stateChange.type], stateChange.payload);
+    // } );
+  }
+
+  public onStateChange(stateChange: StateChange): void {
+    console.log( StateType[stateChange.type], stateChange.payload);
   }
 }

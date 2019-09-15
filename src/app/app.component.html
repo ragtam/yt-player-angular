@@ -6,7 +6,7 @@
 
     <div class="d-flex justify-content-center">
         <div class="flex-column">
-                <yt-player [videoId]="videoId" [options]="playerOptions"></yt-player>
+                <yt-player [videoId]="videoId" [options]="playerOptions" (stateChange)="onStateChange($event)"></yt-player>
                 <form [formGroup]="videoIdForm" (ngSubmit)="onSubmit(videoIdForm)">
                     <div class="input-group">
                         <div class="input-group-append">

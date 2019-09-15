@@ -1,29 +1,18 @@
 import { Injectable } from '@angular/core';
 import * as YtPlayer from 'yt-player';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { PlayerOptions } from '../player-options';
 import { YtPlayerFasadeModule } from './yt-player-fasade.module';
 import { EventsRegistry } from './events-registry/events-registry';
 import { PlaybackQuality } from './models/playback-quality';
 import { PlayerState } from './models/player-state';
 import { PlayerMethods } from './models/player-methods';
-import { PlayerStreams } from './models/player-streams';
+import { StateChange } from './models/state-change';
 
 @Injectable({ providedIn: YtPlayerFasadeModule })
-export class YtPlayerService implements PlayerMethods, PlayerStreams {
+export class YtPlayerService implements PlayerMethods {
 
-  public get error$(): Observable<string> { return this.eventsRegistry.error$; }
-  public get unplayable$(): Observable<string> { return this.eventsRegistry.unplayable$; }
-  public get timeUpdate$(): Observable<number> { return this.eventsRegistry.timeUpdate$; }
-  public get unstarted$(): Observable<void> { return this.eventsRegistry.unstarted$; }
-  public get ended$(): Observable<void> { return this.eventsRegistry.ended$; }
-  public get playing$(): Observable<void> { return this.eventsRegistry.playing$; }
-  public get paused$(): Observable<void> { return this.eventsRegistry.paused$; }
-  public get buffering$(): Observable<void> { return this.eventsRegistry.buffering$; }
-  public get cued$(): Observable<void> { return this.eventsRegistry.cued$; }
-  public get playbackQualityChange$(): Observable<PlaybackQuality> { return this.eventsRegistry.playbackQualityChange$; }
-  public get playbackRateChange$(): Observable<number> { return this.eventsRegistry.playbackRateChange$; }
-
+  public get stateChange$(): Observable<StateChange> { return this.eventsRegistry.stateChange$.asObservable(); }
   public get destroyed(): boolean { return this.player.destroyed; }
   public get videoId(): string { return this.player.videoId; }
 

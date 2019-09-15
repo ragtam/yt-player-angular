@@ -8,3 +8,6 @@ export * from './lib/yt-player-angular.module';
 export * from './lib/player-options';
 export * from './lib/yt-player-fasade/models/player-state';
 export * from './lib/yt-player-fasade/models/playback-quality';
+export * from './lib/yt-player-fasade/models/state-type';
+export * from './lib/yt-player-fasade/models/state-change';
+export * from './lib/yt-player-fasade/models/playback-quality';

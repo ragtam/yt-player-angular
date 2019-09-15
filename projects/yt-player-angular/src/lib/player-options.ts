@@ -2,7 +2,7 @@ export interface PlayerOptions {
     width?: number;
     height?: number;
     autoplay?: boolean;
-    captions?: boolean;
+    captions?: boolean | string;
     controls?: boolean;
     keyboard?: boolean;
     fullscreen?: boolean;
