@@ -140,7 +140,7 @@ stateChange$: Observable<StateChange>
 It broadcasts objects of type `StateChange` that contains following properties:
 ```
 type: StateType;
-payload?: string;
+payload?: any;
 ```
 `StateType` is an enum that lists information about type of broadcasted change:
 ```
