@@ -12,7 +12,13 @@ Go <a href="https://ragtam.github.io/yt-player-angular/">there</a> to see it wor
 
 ## Install
 
-Install **yt-player-angular** from npm:
+First, you need to install **yt-player** from NPM:
+```
+npm install yt-player
+```
+
+Then do the same **for yt-player-angular**:
+
 ```
 npm install yt-player-angular
 ```

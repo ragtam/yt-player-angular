@@ -27,6 +27,7 @@
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "yt-player": "^3.4.1",
+    "yt-player-angular": "^3.4.4",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {

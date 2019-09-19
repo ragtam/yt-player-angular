@@ -1,6 +1,6 @@
 {
   "name": "yt-player-angular",
-  "version": "3.4.3",
+  "version": "3.4.4",
   "dependencies": {
     "yt-player": "~3.4.1"
   },
