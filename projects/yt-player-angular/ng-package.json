@@ -3,8 +3,5 @@
   "dest": "../../dist/yt-player-angular",
   "lib": {
     "entryFile": "src/public-api.ts"
-  },
-  "whitelistedNonPeerDependencies": [
-    "yt-player"
-  ]
+  }
 }

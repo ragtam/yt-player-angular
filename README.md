@@ -17,7 +17,7 @@ First, you need to install **yt-player** from NPM:
 npm install yt-player
 ```
 
-Then do the same **for yt-player-angular**:
+Then do the same for **yt-player-angular**:
 
 ```
 npm install yt-player-angular
