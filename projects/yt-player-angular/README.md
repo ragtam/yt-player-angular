@@ -2,9 +2,6 @@
 
 This package is an Angular wrapper for [yt-player](https://www.npmjs.com/package/yt-player), YouTube Player API.
 
-Versions aligned with yt-player package:
-- yt-player-angular@3.4.* works with yt-player@3.4.*
-
 Release notes:
 - several streams of YtPlayerService combined into one;
 - output property StateChange added to selector
@@ -15,19 +12,14 @@ Go <a href="https://ragtam.github.io/yt-player-angular/">there</a> to see it wor
 
 ## Install
 
-First, you need to install **yt-player** from NPM:
-```
-npm install yt-player
-```
-
-Then do the same for **yt-player-angular**:
+Install **yt-player-angular** from npm:
 ```
 npm install yt-player-angular
 ```
 
 ## Basic Usage
 
-Add YtPlayerAngularModule to `imports` array in your app.module.ts:
+Add YtPlayerAngularModule to `imports` array in your `app.module.ts`:
 
 ```
 import { YtPlayerAngularModule } from 'yt-player-angular';
@@ -39,7 +31,7 @@ import { YtPlayerAngularModule } from 'yt-player-angular';
 ...
 ```
 
-Then add selector `yt-player` to AppComponent's template (app.component.html):
+Then add selector `yt-player` to AppComponent's template (`app.component.html`):
 
 ```
 <yt-player [videoId]="'ut_igW6OOtE'"></yt-player>
@@ -49,7 +41,7 @@ At this point you should be able to see the video.
 
 ## Controlling the player
 
-`YtPlayerService` lets you control the player. Go to app.component.ts and add next `import` at the top of the file:
+`YtPlayerService` lets you control the player. Go to `app.component.ts` and add next `import` at the top of the file:
 
 ```
 import { YtPlayerService, PlayerOptions } from 'yt-player-angular';
@@ -77,7 +69,7 @@ Selector `yt-player` accepts two input properties (first one is mandatory, secon
 [options]
 ```
 
-`videoId` accepts the id of the video you want to play. To specify `options`, `PlayerOptions` interface can be used. Options object might contain following properties:
+`videoId` accepts the id of the video you want to play. To specify `options`, `PlayerOptions` interface can be used. Options object might contain following properties (all of them are optional):
 ```
 - width?: number;
 - heiht?: number;
@@ -96,10 +88,18 @@ Selector `yt-player` accepts two input properties (first one is mandatory, secon
 
 ### Outputs
 
-Selector `yt-player` contains output property
+Selector `yt-player` contains output property `stateChange`. In `app.component.html` add:
 
 ```
-(stateChange)
+<yt-player [videoId]="'ut_igW6OOtE'" (stateChange)="onStateChange($event)"></yt-player>
+```
+
+and then add handler method in `app.component.ts`
+
+```
+public onStateChange(stateChange: StateChange): void {
+  console.log( `Type: ${StateType[stateChange.type]} || Payload: ${stateChange.payload}`);
+}
 ```
 
 It emits the same values as `stateChange$` stream described in Streams section of readme. To get data about changes either component's output or service`s stream can be used.

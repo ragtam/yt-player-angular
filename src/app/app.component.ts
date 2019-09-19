@@ -65,6 +65,6 @@ export class AppComponent implements OnInit {
   }
 
   public onStateChange(stateChange: StateChange): void {
-    console.log( StateType[stateChange.type], stateChange.payload);
+    console.log( `Type: ${StateType[stateChange.type]} || Payload: ${stateChange.payload}`);
   }
 }
