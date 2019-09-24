@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, ViewChild, ElementRef, OnDestroy, Output, EventEmitter } from '@angular/core';
-import { YtPlayerService } from './yt-player-fasade/yt-player-angular.service';
+import { YtPlayerService as YtPlayerService } from './yt-player-adapter/yt-player.service';
 import { IdGeneratorService } from './utils/id-generator.service';
 import { QueueService } from './utils/queue.service';
 import { PlayerOptions } from './player-options';
-import { StateChange } from './yt-player-fasade/models/state-change';
+import { StateChange } from './yt-player-adapter/models/state-change';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -22,6 +22,7 @@ export class YtPlayerComponent implements OnChanges, OnInit, OnDestroy {
   @ViewChild('ytHtmlElementHook', { static: true }) private ytHtmlElementHook: ElementRef;
 
   private stateChangeSubscription: Subscription;
+  private readonly errorMessage = 'Player not initialized. Did you specify [videoId] input property of yt-player-component?';
 
   constructor(
     private ytPlayerService: YtPlayerService,
@@ -33,7 +34,7 @@ export class YtPlayerComponent implements OnChanges, OnInit, OnDestroy {
     this.setUpElementRefId();
     this.dequeuePlayerInitialization();
     this.loadVideo();
-    this.subscribeToStateChange();
+    this.subscribeToStateChanges();
   }
 
   public ngOnChanges(): void {
@@ -70,7 +71,11 @@ export class YtPlayerComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   private loadVideo(): void {
-    this.ytPlayerService.load(this.videoId);
+    try {
+      this.ytPlayerService.load(this.videoId);
+    } catch ( err ) {
+      console.error(this.errorMessage);
+    }
   }
 
   private reloadVideo(): void {
@@ -87,7 +92,7 @@ export class YtPlayerComponent implements OnChanges, OnInit, OnDestroy {
     this.queueService.dequeue();
   }
 
-  private subscribeToStateChange(): void {
+  private subscribeToStateChanges(): void {
     this.stateChangeSubscription = this.ytPlayerService.stateChange$
     .subscribe( stateChange => this.stateChange.emit(stateChange) );
   }

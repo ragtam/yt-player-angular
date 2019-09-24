@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { YtPlayerService } from './yt-player-angular.service';
+import { YtPlayerService } from './yt-player.service';
 import { EventsRegistry } from './events-registry/events-registry';
 
 describe('YtPlayerService', () => {

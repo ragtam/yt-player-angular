@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import * as YtPlayer from 'yt-player';
 import { Observable } from 'rxjs';
 import { PlayerOptions } from '../player-options';
-import { YtPlayerFasadeModule } from './yt-player-fasade.module';
+import { YtPlayerAdapterModule } from './yt-player-adapter.module';
 import { EventsRegistry } from './events-registry/events-registry';
 import { PlaybackQuality } from './models/playback-quality';
 import { PlayerState } from './models/player-state';
 import { PlayerMethods } from './models/player-methods';
 import { StateChange } from './models/state-change';
 
-@Injectable({ providedIn: YtPlayerFasadeModule })
+@Injectable({ providedIn: YtPlayerAdapterModule })
 export class YtPlayerService implements PlayerMethods {
 
   public get stateChange$(): Observable<StateChange> { return this.eventsRegistry.stateChange$.asObservable(); }

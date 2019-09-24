@@ -20,7 +20,7 @@
     ],
     "paths": {
       "yt-player-angular": [
-        "dist/yt-player-angular",
+        "dist/yt-player-angular"
         // "projects/yt-player-angular/src/public-api.ts"
       ],
       "yt-player-angular/*": [

@@ -1,11 +1,11 @@
 import * as YtPlayer from 'yt-player';
 import { Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { YtPlayerFasadeModule } from '../yt-player-fasade.module';
+import { YtPlayerAdapterModule } from '../yt-player-adapter.module';
 import { StateChange } from '../models/state-change';
 import { StateType } from '../models/state-type';
 
-@Injectable({ providedIn: YtPlayerFasadeModule })
+@Injectable({ providedIn: YtPlayerAdapterModule })
 export class EventsRegistry {
 
     public stateChange$ = new Subject<StateChange>();
