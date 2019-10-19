@@ -1,6 +1,6 @@
-import { StateType } from './state-type';
+import { StateChangeType } from "./state-change-type";
 
 export interface StateChange {
-    type: StateType;
-    payload?: any;
+  type: StateChangeType;
+  payload?: any;
 }

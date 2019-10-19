@@ -3,8 +3,8 @@
 This package is an Angular wrapper for [yt-player](https://www.npmjs.com/package/yt-player), YouTube Player API.
 
 Release notes:
-- several streams of YtPlayerService combined into one;
-- output property StateChange added to selector
+
+- fixed problems with angular zone and change detection.
 
 ## Demo
 
@@ -13,6 +13,7 @@ Go <a href="https://ragtam.github.io/yt-player-angular/">there</a> to see it wor
 ## Install
 
 First, you need to install **yt-player** from NPM:
+
 ```
 npm install yt-player
 ```
@@ -70,12 +71,14 @@ this.ytPlayerService.play();
 ### Inputs
 
 Selector `yt-player` accepts two input properties (first one is mandatory, second optional):
+
 ```
 [videoId]
 [options]
 ```
 
 `videoId` accepts the id of the video you want to play. To specify `options`, `PlayerOptions` interface can be used. Options object might contain following properties (all of them are optional):
+
 ```
 - width?: number;
 - heiht?: number;
@@ -104,7 +107,7 @@ and then add handler method in `app.component.ts`
 
 ```
 public onStateChange(stateChange: StateChange): void {
-  console.log( `Type: ${StateType[stateChange.type]} || Payload: ${stateChange.payload}`);
+  console.log( `Type: ${StateChangeType[stateChange.type]} || Payload: ${stateChange.payload}`);
 }
 ```
 
@@ -119,7 +122,7 @@ It emits the same values as `stateChange$` stream described in Streams section o
 - pause(): void
 - stop(): void
 - getCurrentTime(): number
-- seek(seconds: number): void     // go to specific second in video. Does not stop playback   
+- seek(seconds: number): void     // go to specific second in video. Does not stop playback
 - setVolume(value: number): void  // value between 0 - 100
 - getVolume(): number
 - mute(): void
@@ -144,11 +147,14 @@ stateChange$: Observable<StateChange>
 ```
 
 It broadcasts objects of type `StateChange` that contains following properties:
+
 ```
-type: StateType;
+type: StateChangeType;
 payload?: any;
 ```
-`StateType` is an enum that lists information about type of broadcasted change:
+
+`StateChangeType` is an enum that lists information about type of broadcasted change:
+
 ```
 Error,            // StateChange with payload containing error message: string
 Unplayable,       // StateChange with payload containing video id: string

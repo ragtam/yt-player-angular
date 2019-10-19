@@ -1,36 +1,50 @@
-import * as YtPlayer from 'yt-player';
-import { Subject } from 'rxjs';
-import { Injectable } from '@angular/core';
-import { YtPlayerAdapterModule } from '../yt-player-adapter.module';
-import { StateChange } from '../models/state-change';
-import { StateType } from '../models/state-type';
+import * as YtPlayer from "yt-player";
+import { Subject } from "rxjs";
+import { Injectable, NgZone } from "@angular/core";
+import { YtPlayerAdapterModule } from "../yt-player-adapter.module";
+import { StateChange } from "../models/state-change";
+import { StateChangeType } from "../models/state-change-type";
 
 @Injectable({ providedIn: YtPlayerAdapterModule })
 export class EventsRegistry {
+  public stateChange$ = new Subject<StateChange>();
 
-    public stateChange$ = new Subject<StateChange>();
+  constructor(private ngZone: NgZone) {}
 
-    private eventHandlers = new Map<string, (args?: any) => void>([
-        ['error', (err) => this.broadcastStatusChange(StateType.Error, err)],
-        ['unplayable', (videoId) => this.broadcastStatusChange(StateType.Unplayable, videoId)],
-        ['unstarted', () => this.broadcastStatusChange(StateType.Unstarted)],
-        ['ended', () => this.broadcastStatusChange(StateType.Ended)],
-        ['playing', () => this.broadcastStatusChange(StateType.Started)],
-        ['paused', () => this.broadcastStatusChange(StateType.Paused)],
-        ['buffering', () => this.broadcastStatusChange(StateType.Buffering)],
-        ['cued', () => this.broadcastStatusChange(StateType.Cued)],
-        ['playbackQualityChange', (quality) => this.broadcastStatusChange(StateType.QualityChanged, quality)],
-        ['playbackRateChange', (rate) => this.broadcastStatusChange(StateType.RateChanged, rate)],
-        ['timeupdate', (time) => this.broadcastStatusChange( StateType.PlaybackProgress, time)],
-    ]);
+  private eventHandlers = new Map<string, (args?: any) => void>([
+    ["error", err => this.broadcastStatusChange(StateChangeType.Error, err)],
+    [
+      "unplayable",
+      videoId => this.broadcastStatusChange(StateChangeType.Unplayable, videoId)
+    ],
+    ["unstarted", () => this.broadcastStatusChange(StateChangeType.Unstarted)],
+    ["ended", () => this.broadcastStatusChange(StateChangeType.Ended)],
+    ["playing", () => this.broadcastStatusChange(StateChangeType.Started)],
+    ["paused", () => this.broadcastStatusChange(StateChangeType.Paused)],
+    ["buffering", () => this.broadcastStatusChange(StateChangeType.Buffering)],
+    ["cued", () => this.broadcastStatusChange(StateChangeType.Cued)],
+    [
+      "playbackQualityChange",
+      quality =>
+        this.broadcastStatusChange(StateChangeType.QualityChanged, quality)
+    ],
+    [
+      "playbackRateChange",
+      rate => this.broadcastStatusChange(StateChangeType.RateChanged, rate)
+    ],
+    [
+      "timeupdate",
+      time => this.broadcastStatusChange(StateChangeType.PlaybackProgress, time)
+    ]
+  ]);
 
-    public register(player: YtPlayer ) {
-        this.eventHandlers.forEach((eventHandler, eventName) => {
-            player.on(eventName, eventHandler);
-        });
-    }
+  public register(player: YtPlayer) {
+    this.eventHandlers.forEach((eventHandler, eventName) => {
+      player.on(eventName, eventHandler);
+    });
+  }
 
-    private broadcastStatusChange( type: StateType, payload?: any ): void {
-        this.stateChange$.next({ type, payload });
-    }
+  private broadcastStatusChange(type: StateChangeType, payload?: any): void {
+    this.ngZone.run(() => this.stateChange$.next({ type, payload }));
+  }
 }
