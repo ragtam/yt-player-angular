@@ -26,7 +26,9 @@ export class AppComponent {
     { action: () => this.ytPlayerService.stop(), text: "stop()" },
     {
       action: () =>
-        console.log("getCurrentTime()", this.ytPlayerService.getCurrentTime()),
+        this.writeToLog(
+          `getCurrentTime() || ${this.ytPlayerService.getCurrentTime()}`
+        ),
       text: "getCurrentTime()"
     },
     { action: () => this.ytPlayerService.seek(20), text: "seek(20)" },
@@ -36,13 +38,14 @@ export class AppComponent {
     },
     {
       action: () =>
-        console.log("getVolume()", this.ytPlayerService.getVolume()),
+        this.writeToLog(`getVolume() || ${this.ytPlayerService.getVolume()}`),
       text: "getVolume()"
     },
     { action: () => this.ytPlayerService.mute(), text: "mute()" },
     { action: () => this.ytPlayerService.unMute(), text: "unMute()" },
     {
-      action: () => console.log("isMuted()", this.ytPlayerService.isMuted()),
+      action: () =>
+        this.writeToLog(`isMuted() || ${this.ytPlayerService.isMuted()}`),
       text: "isMuted()"
     },
     {
@@ -68,38 +71,38 @@ export class AppComponent {
     },
     {
       action: () =>
-        console.log(
-          "getPlaybackRate()",
-          this.ytPlayerService.getPlaybackRate()
+        this.writeToLog(
+          `getPlaybackRate() || ${this.ytPlayerService.getPlaybackRate()}`
         ),
       text: "getPlaybackRate()"
     },
     {
       action: () =>
-        console.log(
-          "getAvailablePlaybackRates()",
-          this.ytPlayerService.getAvailablePlaybackRates()
+        this.writeToLog(
+          `getAvailablePlaybackRates() || ${this.ytPlayerService.getAvailablePlaybackRates()}`
         ),
       text: "getAvailablePlaybackRates()"
     },
     {
       action: () =>
-        console.log("getDuration()", this.ytPlayerService.getDuration()),
+        this.writeToLog(`getDuration() ${this.ytPlayerService.getDuration()}`),
       text: "getDuration()"
     },
     {
       action: () =>
-        console.log(
-          "getBufferingProgress()",
-          this.ytPlayerService.getBufferingProgress()
+        this.writeToLog(
+          `getBufferingProgress() || ${this.ytPlayerService.getBufferingProgress()}`
         ),
       text: "getBufferingProgress()"
     },
     {
-      action: () => console.log("getState()", this.ytPlayerService.getState()),
+      action: () =>
+        this.writeToLog(`getState() || ${this.ytPlayerService.getState()}`),
       text: "getState()"
     }
   ];
+  public log = "";
+
   constructor(
     private ytPlayerService: YtPlayerService,
     private fb: FormBuilder
@@ -115,11 +118,19 @@ export class AppComponent {
     }
   }
 
+  public onClearLogClick(): void {
+    this.log = "";
+  }
+
   public onStateChange(stateChange: StateChange): void {
-    console.log(
-      `Type: ${StateChangeType[stateChange.type]} || Payload: ${
+    this.writeToLog(
+      `State Change Type: ${StateChangeType[stateChange.type]} || Payload: ${
         stateChange.payload
       }`
     );
+  }
+
+  private writeToLog(text: string): void {
+    this.log = `\r${text}` + `\n${this.log || ""}`;
   }
 }

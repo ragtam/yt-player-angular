@@ -5,9 +5,8 @@
     <a href="https://www.npmjs.com/package/yt-player-angular"
       >yt-player-angular</a
     >
-    package. Below, video and buttons to control it. Go to
-    <b>developer tools</b> to see what streams emit. You`ll find method results
-    there too.
+    package. Below, video, text area with emitted streams and button actions
+    logged.
   </p>
   <hr />
 
@@ -34,6 +33,13 @@
           >Put something there</small
         >
       </form>
+
+      <div class="textwrapper">
+        <textarea rows="8" disabled>
+          {{ log }}
+        </textarea>
+        <button class="btn" (click)="onClearLogClick()">Clear log</button>
+      </div>
     </div>
   </div>
 
