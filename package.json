@@ -7,7 +7,7 @@
     "build-lib-watch": "ng build yt-player-angular --watch",
     "build-lib": "ng build yt-player-angular",
     "test": "ng test",
-    "test-lib": "ng test yt-player-angular",
+    "test-lib": "ng test yt-player-angular --watch=false --source-map=false --browsers=ChromeHeadless",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build-app": "ng build --output-path docs --prod --base-href https://ragtam.github.io/yt-player-angular/",
