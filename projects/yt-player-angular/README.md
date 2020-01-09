@@ -95,6 +95,8 @@ Selector `yt-player` accepts two input properties (first one is mandatory, secon
 - playsInline?: boolean;        // inline or fullscreen in an HTML5 player on iOS. Default true
 ```
 
+Note that modern browsers might block autoplaying multimedia, explanation in [MDN](https://developer.mozilla.org/en-US/docs/Web/Media/Autoplay_guide#Autoplay_availability).
+
 ### Outputs
 
 Selector `yt-player` contains output property `stateChange`. In `app.component.html` add:
