@@ -2,10 +2,6 @@
 
 This package is an Angular wrapper for [yt-player](https://www.npmjs.com/package/yt-player), YouTube Player API.
 
-Release notes:
-
-- fixed problems with angular zone and change detection.
-
 ## Demo
 
 Go <a href="https://ragtam.github.io/yt-player-angular/">there</a> to see it working.
