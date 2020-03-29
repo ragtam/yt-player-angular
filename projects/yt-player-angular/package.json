@@ -1,0 +1,29 @@
+{
+  "name": "yt-player-angular-v9",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^9.1.0",
+    "@angular/core": "^9.1.0",
+    "tslib": "^1.10.0",
+    "events": "3.0.0",
+    "rxjs": "~6.4.0",
+    "yt-player": "~3.4.1"
+  },
+  "homepage": "https://github.com/ragtam/yt-player-angular",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ragtam/yt-player-angular.git"
+  },
+  "license": "MIT",
+  "description": "Simple, configurable YouTube player for Angular",
+  "keywords": [
+    "youtube",
+    "youtube player",
+    "youtube player angular",
+    "youtube angular",
+    "yt player",
+    "yt player angular",
+    "yt angular",
+    "yt-player-angular"
+  ]
+}
