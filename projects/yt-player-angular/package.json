@@ -1,6 +1,6 @@
 {
-  "name": "yt-player-angular-v9",
-  "version": "0.0.1",
+  "name": "migration-yt-player-angular",
+  "version": "0.0.2",
   "peerDependencies": {
     "@angular/common": "^9.1.0",
     "@angular/core": "^9.1.0",
@@ -17,13 +17,6 @@
   "license": "MIT",
   "description": "Simple, configurable YouTube player for Angular",
   "keywords": [
-    "youtube",
-    "youtube player",
-    "youtube player angular",
-    "youtube angular",
-    "yt player",
-    "yt player angular",
-    "yt angular",
-    "yt-player-angular"
+    "migration-yt-player-angular"
   ]
 }

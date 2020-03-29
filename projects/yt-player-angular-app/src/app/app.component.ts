@@ -1,17 +1,17 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import {
   PlayerOptions,
   StateChange,
   PlaybackQuality,
   StateChangeType,
   YtPlayerService
-} from "yt-player-angular";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+} from 'yt-player-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"]
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   public playerOptions: PlayerOptions = {
@@ -19,89 +19,89 @@ export class AppComponent {
     timeupdateFrequency: 1000
   };
   public videoIdForm: FormGroup;
-  public videoId = "jhicDUgXyNg";
+  public videoId = 'fJ9rUzIMcZQ';
   public apiMethods = [
-    { action: () => this.ytPlayerService.play(), text: "play()" },
-    { action: () => this.ytPlayerService.pause(), text: "pause()" },
-    { action: () => this.ytPlayerService.stop(), text: "stop()" },
+    { action: () => this.ytPlayerService.play(), text: 'play()' },
+    { action: () => this.ytPlayerService.pause(), text: 'pause()' },
+    { action: () => this.ytPlayerService.stop(), text: 'stop()' },
     {
       action: () =>
         this.writeToLog(
           `getCurrentTime() || ${this.ytPlayerService.getCurrentTime()}`
         ),
-      text: "getCurrentTime()"
+      text: 'getCurrentTime()'
     },
-    { action: () => this.ytPlayerService.seek(20), text: "seek(20)" },
+    { action: () => this.ytPlayerService.seek(20), text: 'seek(20)' },
     {
       action: () => this.ytPlayerService.setVolume(100),
-      text: "setVolume(100)"
+      text: 'setVolume(100)'
     },
     {
       action: () =>
         this.writeToLog(`getVolume() || ${this.ytPlayerService.getVolume()}`),
-      text: "getVolume()"
+      text: 'getVolume()'
     },
-    { action: () => this.ytPlayerService.mute(), text: "mute()" },
-    { action: () => this.ytPlayerService.unMute(), text: "unMute()" },
+    { action: () => this.ytPlayerService.mute(), text: 'mute()' },
+    { action: () => this.ytPlayerService.unMute(), text: 'unMute()' },
     {
       action: () =>
         this.writeToLog(`isMuted() || ${this.ytPlayerService.isMuted()}`),
-      text: "isMuted()"
+      text: 'isMuted()'
     },
     {
       action: () => this.ytPlayerService.setSize(320, 180),
-      text: "setSize(320, 180)"
+      text: 'setSize(320, 180)'
     },
     {
       action: () => this.ytPlayerService.setSize(640, 360),
-      text: "setSize(640, 360)"
+      text: 'setSize(640, 360)'
     },
     {
       action: () => this.ytPlayerService.setPlaybackRate(0.5),
-      text: "setPlaybackRate(0.5)"
+      text: 'setPlaybackRate(0.5)'
     },
     {
       action: () => this.ytPlayerService.setPlaybackRate(1),
-      text: "setPlaybackRate(1)"
+      text: 'setPlaybackRate(1)'
     },
     {
       action: () =>
         this.ytPlayerService.setPlaybackQuality(PlaybackQuality.Small),
-      text: "setPlaybackQuality(PlaybackQuality.Small)"
+      text: 'setPlaybackQuality(PlaybackQuality.Small)'
     },
     {
       action: () =>
         this.writeToLog(
           `getPlaybackRate() || ${this.ytPlayerService.getPlaybackRate()}`
         ),
-      text: "getPlaybackRate()"
+      text: 'getPlaybackRate()'
     },
     {
       action: () =>
         this.writeToLog(
           `getAvailablePlaybackRates() || ${this.ytPlayerService.getAvailablePlaybackRates()}`
         ),
-      text: "getAvailablePlaybackRates()"
+      text: 'getAvailablePlaybackRates()'
     },
     {
       action: () =>
         this.writeToLog(`getDuration() ${this.ytPlayerService.getDuration()}`),
-      text: "getDuration()"
+      text: 'getDuration()'
     },
     {
       action: () =>
         this.writeToLog(
           `getBufferingProgress() || ${this.ytPlayerService.getBufferingProgress()}`
         ),
-      text: "getBufferingProgress()"
+      text: 'getBufferingProgress()'
     },
     {
       action: () =>
         this.writeToLog(`getState() || ${this.ytPlayerService.getState()}`),
-      text: "getState()"
+      text: 'getState()'
     }
   ];
-  public log = "";
+  public log = '';
 
   constructor(
     private ytPlayerService: YtPlayerService,
@@ -119,7 +119,7 @@ export class AppComponent {
   }
 
   public onClearLogClick(): void {
-    this.log = "";
+    this.log = '';
   }
 
   public onStateChange(stateChange: StateChange): void {
@@ -131,6 +131,6 @@ export class AppComponent {
   }
 
   private writeToLog(text: string): void {
-    this.log = `\r${text}` + `\n${this.log || ""}`;
+    this.log = `\r${text}` + `\n${this.log || ''}`;
   }
 }
