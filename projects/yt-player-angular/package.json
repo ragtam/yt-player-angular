@@ -1,6 +1,6 @@
 {
-  "name": "migration-yt-player-angular",
-  "version": "0.0.2",
+  "name": "yt-player-angular",
+  "version": "4.0.0",
   "peerDependencies": {
     "@angular/common": "^9.1.0",
     "@angular/core": "^9.1.0",

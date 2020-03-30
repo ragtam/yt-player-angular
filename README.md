@@ -2,6 +2,9 @@
 
 This package is an Angular wrapper for [yt-player](https://www.npmjs.com/package/yt-player), YouTube Player API.
 
+Version **4** supports **Angular 9**.
+For Angular 8 use package version 3.
+
 ## Demo
 
 Go <a href="https://ragtam.github.io/yt-player-angular/">there</a> to see it working.

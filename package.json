@@ -1,6 +1,6 @@
 {
   "name": "yt-player-angular",
-  "version": "0.0.0",
+  "version": "4.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,10 +8,11 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build-lib-watch": "ng build yt-player-angular --watch",
-    "build-lib": "ng build yt-player-angular",
+    "build-lib": "ng build yt-player-angular --prod",
     "test-lib": "ng test yt-player-angular --watch=false --source-map=false --browsers=ChromeHeadless",
-    "build-app": "ng build --output-path docs --prod --base-href https://ragtam.github.io/yt-player-angular/",
-    "publish-lib": "ng build yt-player-angular --prod && cd dist/yt-player-angular/ && npm publish"
+    "build-app": "ng build yt-player-angular-app --prod --base-href https://ragtam.github.io/yt-player-angular/",
+    "publish-lib": "ng build yt-player-angular --prod && cd dist/yt-player-angular/ && npm publish",
+    "x": "ng build yt-player-angular-app --output-path docs --prod --base-href https://ragtam.github.io/yt-player-angular/"
   },
   "private": true,
   "dependencies": {

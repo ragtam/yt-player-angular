@@ -1,7 +1,7 @@
 #environment:
 language: node_js
 node_js:
-  - 12.12.0
+  - 12.16.0
 addons:
   chrome: stable
 
@@ -19,6 +19,6 @@ deploy:
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
   keep_history: true
-  local_dir: docs
+  local_dir: dist/yt-player-angular-app
   on:
     branch: master
