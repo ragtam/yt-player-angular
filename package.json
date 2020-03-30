@@ -1,6 +1,6 @@
 {
   "name": "yt-player-angular",
-  "version": "4.0.0",
+  "version": "4.0.2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
