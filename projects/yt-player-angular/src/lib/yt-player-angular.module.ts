@@ -7,4 +7,4 @@ import { YtPlayerAdapterModule } from './yt-player-adapter/yt-player-adapter.mod
   declarations: [YtPlayerComponent],
   exports: [YtPlayerComponent]
 })
-export class YtPlayerAngularModule { }
+export class YtPlayerAngularModule {}

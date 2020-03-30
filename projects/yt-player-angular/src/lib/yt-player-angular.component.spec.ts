@@ -8,9 +8,8 @@ describe('YtPlayerAngularComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ YtPlayerComponent ]
-    })
-    .compileComponents();
+      declarations: [YtPlayerComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

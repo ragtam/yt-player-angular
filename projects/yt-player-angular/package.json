@@ -1,9 +1,10 @@
 {
   "name": "yt-player-angular",
-  "version": "3.5.1",
+  "version": "4.0.0",
   "peerDependencies": {
-    "@angular/common": "^8.2.14",
-    "@angular/core": "^8.2.14",
+    "@angular/common": "^9.1.0",
+    "@angular/core": "^9.1.0",
+    "tslib": "^1.10.0",
     "events": "3.0.0",
     "rxjs": "~6.4.0",
     "yt-player": "~3.4.1"
@@ -16,13 +17,6 @@
   "license": "MIT",
   "description": "Simple, configurable YouTube player for Angular",
   "keywords": [
-    "youtube",
-    "youtube player",
-    "youtube player angular",
-    "youtube angular",
-    "yt player",
-    "yt player angular",
-    "yt angular",
-    "yt-player-angular"
+    "migration-yt-player-angular"
   ]
 }

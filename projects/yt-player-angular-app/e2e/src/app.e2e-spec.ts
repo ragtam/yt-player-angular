@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to looptube!');
+    expect(page.getTitleText()).toEqual('yt-player-angular-app app is running!');
   });
 
   afterEach(async () => {

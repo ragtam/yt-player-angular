@@ -8,18 +8,18 @@ import {
   OnDestroy,
   Output,
   EventEmitter
-} from "@angular/core";
-import { YtPlayerService } from "./yt-player-adapter/yt-player.service";
-import { IdGeneratorService } from "./utils/id-generator.service";
-import { QueueService } from "./utils/queue.service";
-import { PlayerOptions } from "./player-options";
-import { StateChange } from "./yt-player-adapter/models/state-change";
-import { Subscription } from "rxjs";
-import { tap } from "rxjs/operators";
-import { StateChangeType } from "./yt-player-adapter/models/state-change-type";
+} from '@angular/core';
+import { YtPlayerService } from './yt-player-adapter/yt-player.service';
+import { IdGeneratorService } from './utils/id-generator.service';
+import { QueueService } from './utils/queue.service';
+import { PlayerOptions } from './player-options';
+import { StateChange } from './yt-player-adapter/models/state-change';
+import { Subscription } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { StateChangeType } from './yt-player-adapter/models/state-change-type';
 
 @Component({
-  selector: "yt-player",
+  selector: 'yt-player',
   template: `
     <div #ytHtmlElementHook></div>
   `
@@ -30,12 +30,12 @@ export class YtPlayerComponent implements OnChanges, OnInit, OnDestroy {
 
   @Output() public stateChange = new EventEmitter<StateChange>();
 
-  @ViewChild("ytHtmlElementHook", { static: true })
+  @ViewChild('ytHtmlElementHook', { static: true })
   private ytHtmlElementHook: ElementRef;
 
   private stateChangeSubscription: Subscription;
   private readonly errorMessage =
-    "Player not initialized. Did you specify [videoId] input property of yt-player-component?";
+    'Player not initialized. Did you specify [videoId] input property of yt-player-component?';
 
   constructor(
     private ytPlayerService: YtPlayerService,
@@ -67,7 +67,7 @@ export class YtPlayerComponent implements OnChanges, OnInit, OnDestroy {
 
   private setUpElementRefId(): void {
     const id = this.idGeneratorService.generate();
-    this.ytHtmlElementHook.nativeElement.setAttribute("id", id);
+    this.ytHtmlElementHook.nativeElement.setAttribute('id', id);
   }
 
   private videoIdIsDefined(): boolean {
@@ -77,12 +77,12 @@ export class YtPlayerComponent implements OnChanges, OnInit, OnDestroy {
   private elementRefIdIsDefined(): boolean {
     return (
       this.ytHtmlElementHook.nativeElement &&
-      this.ytHtmlElementHook.nativeElement.getAttribute("id")
+      this.ytHtmlElementHook.nativeElement.getAttribute('id')
     );
   }
 
   private initializePlayer(): void {
-    const id = this.ytHtmlElementHook.nativeElement.getAttribute("id");
+    const id = this.ytHtmlElementHook.nativeElement.getAttribute('id');
     this.ytPlayerService.init(`#${id}`, this.options);
   }
 
