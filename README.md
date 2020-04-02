@@ -1,6 +1,6 @@
-# Yt-Player-Angular
-
 [![Build Status](https://travis-ci.org/ragtam/yt-player-angular.svg?branch=master)](https://travis-ci.org/ragtam/yt-player-angular)
+
+# Yt-Player-Angular
 
 This package is an Angular wrapper for [yt-player](https://www.npmjs.com/package/yt-player), YouTube Player API.
 
