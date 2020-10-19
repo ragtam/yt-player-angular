@@ -6,8 +6,23 @@ This package is an Angular wrapper for [yt-player](https://www.npmjs.com/package
 
 Lets you embed Youtube video and control it ( play/pause/seek and many more ) programatically.
 
-Version **4** supports **Angular 9**.
-For Angular 8 use package version 3.
+Latest version supports **Angular 10**. :metal:
+
+Ver 4.X.X => Angular 9
+Ver 3.X.X => Angular 8
+
+---
+
+**yt-player** package is exported as a **commonJS** module. Due to that fact Angular 10 is going to throw a warning at build time about optimization bailouts. You can switch that off by adding 'allowedCommonJsDependencies' to build options located in angular.json file in your project.
+
+```
+"options": {
+            "allowedCommonJsDependencies": ["yt-player"],
+            ...
+          }
+```
+
+You can read more about that [here](https://angular.io/guide/build#configuring-commonjs-dependencies)
 
 ## Demo
 
