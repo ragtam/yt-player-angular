@@ -21,4 +21,4 @@ deploy:
   keep_history: true
   local_dir: dist/yt-player-angular-app
   on:
-    branch: master
+    branch: angular-10
