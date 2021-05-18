@@ -38,6 +38,8 @@
     "@angular/platform-browser-dynamic": "12.0.0",
     "@angular/router": "12.0.0",
     "@nrwl/angular": "12.3.3",
+    "bootstrap": "^4.5.3",
+    "load-script2": "^2.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"

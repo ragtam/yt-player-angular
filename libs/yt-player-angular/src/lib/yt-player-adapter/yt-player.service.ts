@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as YtPlayer from 'yt-player';
+import YouTubePlayer from '../yt-player/yt-player';
 import { Observable } from 'rxjs';
 import { PlayerOptions } from '../player-options';
 import { YtPlayerAdapterModule } from './yt-player-adapter.module';
@@ -16,10 +16,10 @@ export class YtPlayerService implements PlayerMethods {
   public get destroyed(): boolean { return this.player.destroyed; }
   public get videoId(): string { return this.player.videoId; }
 
-  private get player(): YtPlayer { return this.ytPlayer; }
-  private set player(value: YtPlayer) { this.ytPlayer = value; }
+  private get player(): YouTubePlayer { return this.ytPlayer; }
+  private set player(value: YouTubePlayer) { this.ytPlayer = value; }
 
-  private ytPlayer: YtPlayer;
+  private ytPlayer: YouTubePlayer;
   private playerOptions: PlayerOptions;
 
   constructor( private eventsRegistry: EventsRegistry ) { }
@@ -115,6 +115,6 @@ export class YtPlayerService implements PlayerMethods {
 
   private setUpPlayer(htmlId: string, playerOptions?: PlayerOptions): void {
     this.playerOptions = playerOptions;
-    this.player = new YtPlayer(htmlId, playerOptions);
+    this.player = new YouTubePlayer(htmlId, playerOptions);
   }
 }

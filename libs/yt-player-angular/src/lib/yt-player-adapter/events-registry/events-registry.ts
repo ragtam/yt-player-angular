@@ -1,4 +1,4 @@
-import * as YtPlayer from "yt-player";
+import YouTubePlayer from "../../yt-player/yt-player";
 import { Subject } from "rxjs";
 import { Injectable, NgZone } from "@angular/core";
 import { YtPlayerAdapterModule } from "../yt-player-adapter.module";
@@ -38,7 +38,7 @@ export class EventsRegistry {
     ]
   ]);
 
-  public register(player: YtPlayer) {
+  public register(player: YouTubePlayer) {
     this.eventHandlers.forEach((eventHandler, eventName) => {
       player.on(eventName, eventHandler);
     });
