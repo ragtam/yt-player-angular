@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
-import { YtPlayerComponent } from './yt-player-angular.component';
+import { CommonModule } from '@angular/common';
 import { YtPlayerAdapterModule } from './yt-player-adapter/yt-player-adapter.module';
+import { YtPlayerComponent } from './yt-player-angular.component';
 
 @NgModule({
-  imports: [YtPlayerAdapterModule],
+  imports: [CommonModule, YtPlayerAdapterModule],
   declarations: [YtPlayerComponent],
   exports: [YtPlayerComponent]
 })

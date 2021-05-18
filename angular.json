@@ -149,6 +149,46 @@
           }
         }
       }
+    },
+    "yt-player-angular": {
+      "projectType": "library",
+      "root": "libs/yt-player-angular",
+      "sourceRoot": "libs/yt-player-angular/src",
+      "prefix": "yt-player-angular-app",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "project": "libs/yt-player-angular/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/yt-player-angular/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/yt-player-angular/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/yt-player-angular"],
+          "options": {
+            "jestConfig": "libs/yt-player-angular/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/yt-player-angular/src/**/*.ts",
+              "libs/yt-player-angular/src/**/*.html"
+            ]
+          }
+        }
+      }
     }
   }
 }

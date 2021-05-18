@@ -14,12 +14,7 @@
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ],
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
         "accessToken": "MGIzOGM5ZDItODMxYi00Y2ViLWIzNmItNWQ5NGM4MTlhMGQ5fHJlYWQtd3JpdGU=",
         "canTrackAnalytics": false,
         "showUsageWarnings": true
@@ -32,9 +27,10 @@
     },
     "yt-player-angular-app-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "yt-player-angular-app"
-      ]
+      "implicitDependencies": ["yt-player-angular-app"]
+    },
+    "yt-player-angular": {
+      "tags": []
     }
   }
 }
