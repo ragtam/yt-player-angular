@@ -15,8 +15,6 @@ import { QueueService } from './utils/queue.service';
 import { PlayerOptions } from './player-options';
 import { StateChange } from './yt-player-adapter/models/state-change';
 import { Subscription } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import { StateChangeType } from './yt-player-adapter/models/state-change-type';
 
 @Component({
   selector: 'yt-player',

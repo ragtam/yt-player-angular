@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import YouTubePlayer from '../yt-player/yt-player';
+import { YouTubePlayer } from '@yt-player-angular-app/yt-player';
 import { Observable } from 'rxjs';
 import { PlayerOptions } from '../player-options';
 import { YtPlayerAdapterModule } from './yt-player-adapter.module';

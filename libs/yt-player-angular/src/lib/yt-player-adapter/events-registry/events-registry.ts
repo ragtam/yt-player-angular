@@ -1,6 +1,6 @@
-import YouTubePlayer from "../../yt-player/yt-player";
+import { YouTubePlayer, YtPlayerEvent } from "@yt-player-angular-app/yt-player";
 import { Subject } from "rxjs";
-import { Injectable, NgZone } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { YtPlayerAdapterModule } from "../yt-player-adapter.module";
 import { StateChange } from "../models/state-change";
 import { StateChangeType } from "../models/state-change-type";
@@ -9,31 +9,31 @@ import { StateChangeType } from "../models/state-change-type";
 export class EventsRegistry {
   public stateChange$ = new Subject<StateChange>();
 
-  constructor(private ngZone: NgZone) {}
+  constructor() {}
 
   private eventHandlers = new Map<string, (args?: any) => void>([
-    ["error", err => this.broadcastStatusChange(StateChangeType.Error, err)],
+    [YtPlayerEvent.ERROR, err => this.broadcastStatusChange(StateChangeType.Error, err)],
     [
-      "unplayable",
+      YtPlayerEvent.UNPLAYABLE,
       videoId => this.broadcastStatusChange(StateChangeType.Unplayable, videoId)
     ],
-    ["unstarted", () => this.broadcastStatusChange(StateChangeType.Unstarted)],
-    ["ended", () => this.broadcastStatusChange(StateChangeType.Ended)],
-    ["playing", () => this.broadcastStatusChange(StateChangeType.Started)],
-    ["paused", () => this.broadcastStatusChange(StateChangeType.Paused)],
-    ["buffering", () => this.broadcastStatusChange(StateChangeType.Buffering)],
-    ["cued", () => this.broadcastStatusChange(StateChangeType.Cued)],
+    [YtPlayerEvent.UNSTARTED, () => this.broadcastStatusChange(StateChangeType.Unstarted)],
+    [YtPlayerEvent.ENDED, () => this.broadcastStatusChange(StateChangeType.Ended)],
+    [YtPlayerEvent.PLAYING, () => this.broadcastStatusChange(StateChangeType.Started)],
+    [YtPlayerEvent.PAUSED, () => this.broadcastStatusChange(StateChangeType.Paused)],
+    [YtPlayerEvent.BUFFERING, () => this.broadcastStatusChange(StateChangeType.Buffering)],
+    [YtPlayerEvent.CUED, () => this.broadcastStatusChange(StateChangeType.Cued)],
     [
-      "playbackQualityChange",
+      YtPlayerEvent.PLAYBACK_QUALITY_CHANGE,
       quality =>
         this.broadcastStatusChange(StateChangeType.QualityChanged, quality)
     ],
     [
-      "playbackRateChange",
+      YtPlayerEvent.PLAYBACK_RATE_CHANGE,
       rate => this.broadcastStatusChange(StateChangeType.RateChanged, rate)
     ],
     [
-      "timeupdate",
+      YtPlayerEvent.TIMEUPDATE,
       time => this.broadcastStatusChange(StateChangeType.PlaybackProgress, time)
     ]
   ]);
@@ -45,6 +45,6 @@ export class EventsRegistry {
   }
 
   private broadcastStatusChange(type: StateChangeType, payload?: any): void {
-    this.ngZone.run(() => this.stateChange$.next({ type, payload }));
+    this.stateChange$.next({ type, payload });
   }
 }

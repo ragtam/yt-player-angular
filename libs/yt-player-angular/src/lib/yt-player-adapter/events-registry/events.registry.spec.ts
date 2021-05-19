@@ -43,7 +43,7 @@ describe("EventsRegistry", () => {
   );
 
   beforeEach(() => {
-    service = TestBed.get(EventsRegistry);
+    service = TestBed.inject(EventsRegistry);
     service.register(ytPlayerMock);
   });
 
