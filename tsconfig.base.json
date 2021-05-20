@@ -16,7 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "yt-player-angular": ["libs/yt-player-angular/src/index.ts"],
-      "@yt-player-angular-app/yt-player": ["libs/yt-player/src/index.ts"]
+      "@lib/yt-player": ["libs/yt-player/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
