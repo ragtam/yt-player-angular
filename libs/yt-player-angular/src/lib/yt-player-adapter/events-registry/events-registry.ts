@@ -1,4 +1,4 @@
-import { YouTubePlayer, YtPlayerEvent } from '@lib/yt-player';
+import { YtPlayerEvent, YouTubePlayer } from '@lib/yt-player';
 import { Subject } from 'rxjs';
 import { Injectable, Optional } from '@angular/core';
 import { YtPlayerAdapterModule } from '../yt-player-adapter.module';
