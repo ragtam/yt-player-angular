@@ -1,4 +1,4 @@
-import { PlaybackQuality } from 'yt-player-angular';
+import { PlaybackQuality } from '../models/playback-quality';
 
 const m = new Map();
 
