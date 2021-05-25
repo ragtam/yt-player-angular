@@ -1,3 +1,4 @@
+import { ChangeDetectorRef } from '@angular/core';
 import { TestBed, async } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { YtPlayerAngularModule } from 'yt-player-angular';
@@ -8,6 +9,7 @@ describe('AppComponent', () => {
         TestBed.configureTestingModule({
             imports: [YtPlayerAngularModule, ReactiveFormsModule],
             declarations: [AppComponent],
+            providers: [ChangeDetectorRef],
         }).compileComponents();
     }));
 
