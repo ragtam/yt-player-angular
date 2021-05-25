@@ -79,6 +79,6 @@ export class EventsRegistry {
         const runOutsideAngular = this.ngZone
             ? (fun) => this.ngZone.runOutsideAngular(fun)
             : (fun) => fun();
-        runOutsideAngular(this.stateChange$.next({ type, payload }));
+        runOutsideAngular(() => this.stateChange$.next({ type, payload }));
     }
 }

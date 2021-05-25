@@ -2,49 +2,22 @@ import { EventsRegistry } from './events-registry';
 import { TestBed } from '@angular/core/testing';
 import { PlaybackQuality } from '../models/playback-quality';
 import { StateChangeType } from '../models/state-change-type';
+import { YouTubePlayerMock } from './youtube-player-mock';
 import { YouTubePlayer } from '@lib/yt-player';
+import { NgZone } from '@angular/core';
 
 describe('EventsRegistry', () => {
     let service: EventsRegistry;
-    const ytPlayerMock = (() => {
-        const m = new Map();
-        return {
-            on: (eventName: string, eventHandler: (args?: any) => void) => {
-                m.set(eventName, eventHandler);
-            },
-            fireEvent: (eventName: string) => {
-                const handler = m.get(eventName);
-                switch (eventName) {
-                    case 'error':
-                        handler('test error');
-                        break;
-                    case 'unplayable':
-                        handler('test video id');
-                        break;
-                    case 'timeupdate':
-                        handler(1);
-                        break;
-                    case 'playbackQualityChange':
-                        handler(PlaybackQuality.Medium);
-                        break;
-                    case 'playbackRateChange':
-                        handler(0.75);
-                        break;
-                    default:
-                        handler();
-                }
-            },
-        };
-    })();
+    const ytPlayerMock = new YouTubePlayerMock();
 
     beforeEach(() =>
         TestBed.configureTestingModule({
-            providers: [EventsRegistry, {}],
+            providers: [EventsRegistry],
         })
     );
 
     beforeEach(() => {
-        service = TestBed.inject(EventsRegistry);
+        service = TestBed.get(EventsRegistry);
         service.register((ytPlayerMock as unknown) as YouTubePlayer);
     });
 

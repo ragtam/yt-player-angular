@@ -8,6 +8,7 @@ import { PlaybackQuality } from './models/playback-quality';
 import { PlayerState } from './models/player-state';
 import { PlayerMethods } from './models/player-methods';
 import { StateChange } from './models/state-change';
+import { YtPlayerWrapperService } from './yt-player-wrapper/yt-player-wrapper.service';
 
 @Injectable({ providedIn: YtPlayerAdapterModule })
 export class YtPlayerService implements PlayerMethods {
@@ -31,7 +32,10 @@ export class YtPlayerService implements PlayerMethods {
     private ytPlayer: YouTubePlayer;
     private playerOptions: PlayerOptions;
 
-    constructor(private eventsRegistry: EventsRegistry) {}
+    constructor(
+        private ytPlayerWrapper: YtPlayerWrapperService,
+        private eventsRegistry: EventsRegistry
+    ) {}
 
     public init(htmlId: string, playerOptions?: PlayerOptions): void {
         this.setUpPlayer(htmlId, playerOptions);
@@ -119,6 +123,9 @@ export class YtPlayerService implements PlayerMethods {
 
     private setUpPlayer(htmlId: string, playerOptions?: PlayerOptions): void {
         this.playerOptions = playerOptions;
-        this.player = new YouTubePlayer(htmlId, playerOptions);
+        this.player = this.ytPlayerWrapper.createInstance(
+            htmlId,
+            playerOptions
+        );
     }
 }
