@@ -1,9 +1,8 @@
+import { YouTubePlayer } from '@libs/yt-player';
+import { StateChangeType, PlaybackQuality } from '@libs/domain';
 import { EventsRegistry } from './events-registry';
 import { TestBed } from '@angular/core/testing';
-import { PlaybackQuality } from '../models/playback-quality';
-import { StateChangeType } from '../models/state-change-type';
 import { YouTubePlayerMock } from './youtube-player-mock';
-import { YouTubePlayer } from '@libs/yt-player';
 
 describe('EventsRegistry', () => {
     let service: EventsRegistry;

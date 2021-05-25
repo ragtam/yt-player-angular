@@ -9,11 +9,10 @@ import {
     Output,
     EventEmitter,
 } from '@angular/core';
-import { IdGeneratorService, QueueService } from '@libs/utils';
-import { YtPlayerService } from './yt-player-adapter/yt-player.service';
-import { PlayerOptions } from './player-options';
-import { StateChange } from './yt-player-adapter/models/state-change';
 import { Subscription } from 'rxjs';
+import { IdGeneratorService, QueueService } from '@libs/utils';
+import { StateChange, PlayerOptions } from '@libs/domain';
+import { YtPlayerService } from './yt-player-adapter/yt-player.service';
 
 @Component({
     selector: 'yt-player',

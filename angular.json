@@ -273,6 +273,46 @@
                     }
                 }
             }
+        },
+        "domain": {
+            "projectType": "library",
+            "root": "libs/domain",
+            "sourceRoot": "libs/domain/src",
+            "prefix": "yt-player-angular-app",
+            "architect": {
+                "build": {
+                    "builder": "@nrwl/angular:package",
+                    "options": {
+                        "project": "libs/domain/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "libs/domain/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "libs/domain/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/domain"],
+                    "options": {
+                        "jestConfig": "libs/domain/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/domain/src/**/*.ts",
+                            "libs/domain/src/**/*.html"
+                        ]
+                    }
+                }
+            }
         }
     }
 }

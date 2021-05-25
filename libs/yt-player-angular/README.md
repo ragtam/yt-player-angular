@@ -1,7 +1,5 @@
 # yt-player-angular
 
-This library was generated with [Nx](https://nx.dev).
+This library is an angular wrapper for yt-player library.
 
-## Running unit tests
-
-Run `nx test yt-player-angular` to execute the unit tests.
+This project is publishable to NPM.

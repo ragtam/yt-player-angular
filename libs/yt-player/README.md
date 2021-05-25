@@ -1,7 +1,5 @@
 # yt-player
 
-This library was generated with [Nx](https://nx.dev).
-
-## Running unit tests
-
-Run `nx test yt-player` to execute the unit tests.
+This library is a clone of
+yt-player. MIT License. Feross Aboukhadijeh <https://feross.org/opensource>
+with minor changes

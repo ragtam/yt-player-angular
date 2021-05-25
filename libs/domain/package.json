@@ -1,5 +1,5 @@
 {
-    "name": "@libs/utils",
+    "name": "@libs/domain",
     "version": "0.0.1",
     "private": true,
     "peerDependencies": {

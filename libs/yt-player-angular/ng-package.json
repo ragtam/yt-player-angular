@@ -2,6 +2,11 @@
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/libs/yt-player-angular",
   "lib": {
-    "entryFile": "src/index.ts"
+    "entryFile": "src/index.ts",
+    "umdModuleIds": {
+      "@libs/utils": "utils",
+      "@libs/domain": "domain",
+      "@libs/yt-player": "ytPlayer"
+    }
   }
 }

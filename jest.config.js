@@ -4,5 +4,6 @@ module.exports = {
         '<rootDir>/libs/yt-player-angular',
         '<rootDir>/libs/yt-player',
         '<rootDir>/libs/utils',
+        '<rootDir>/libs/domain',
     ],
 };
