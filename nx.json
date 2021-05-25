@@ -1,39 +1,39 @@
 {
-  "implicitDependencies": {
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
+    "implicitDependencies": {
+        "package.json": {
+            "dependencies": "*",
+            "devDependencies": "*"
+        },
+        ".eslintrc.json": "*"
     },
-    ".eslintrc.json": "*"
-  },
-  "affected": {
-    "defaultBase": "master"
-  },
-  "npmScope": "yt-player-angular-app",
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "@nrwl/nx-cloud",
-      "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"],
-        "accessToken": "MGIzOGM5ZDItODMxYi00Y2ViLWIzNmItNWQ5NGM4MTlhMGQ5fHJlYWQtd3JpdGU=",
-        "canTrackAnalytics": false,
-        "showUsageWarnings": true
-      }
+    "affected": {
+        "defaultBase": "master"
+    },
+    "npmScope": "yt-player-angular-app",
+    "tasksRunnerOptions": {
+        "default": {
+            "runner": "@nrwl/nx-cloud",
+            "options": {
+                "cacheableOperations": ["build", "lint", "test", "e2e"],
+                "accessToken": "MGIzOGM5ZDItODMxYi00Y2ViLWIzNmItNWQ5NGM4MTlhMGQ5fHJlYWQtd3JpdGU=",
+                "canTrackAnalytics": false,
+                "showUsageWarnings": true
+            }
+        }
+    },
+    "projects": {
+        "yt-player-angular-app": {
+            "tags": []
+        },
+        "yt-player-angular-app-e2e": {
+            "tags": [],
+            "implicitDependencies": ["yt-player-angular-app"]
+        },
+        "yt-player-angular": {
+            "tags": []
+        },
+        "yt-player": {
+            "tags": []
+        }
     }
-  },
-  "projects": {
-    "yt-player-angular-app": {
-      "tags": []
-    },
-    "yt-player-angular-app-e2e": {
-      "tags": [],
-      "implicitDependencies": ["yt-player-angular-app"]
-    },
-    "yt-player-angular": {
-      "tags": []
-    },
-    "yt-player": {
-      "tags": []
-    }
-  }
 }

@@ -1,234 +1,238 @@
 {
-  "version": 1,
-  "cli": {
-    "defaultCollection": "@nrwl/angular"
-  },
-  "defaultProject": "yt-player-angular-app",
-  "schematics": {
-    "@nrwl/angular": {
-      "application": {
-        "linter": "eslint"
-      },
-      "library": {
-        "linter": "eslint"
-      },
-      "storybook-configuration": {
-        "linter": "eslint"
-      }
+    "version": 1,
+    "cli": {
+        "defaultCollection": "@nrwl/angular"
     },
-    "@nrwl/angular:application": {
-      "style": "scss",
-      "linter": "eslint",
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
+    "defaultProject": "yt-player-angular-app",
+    "schematics": {
+        "@nrwl/angular": {
+            "application": {
+                "linter": "eslint"
+            },
+            "library": {
+                "linter": "eslint"
+            },
+            "storybook-configuration": {
+                "linter": "eslint"
+            }
+        },
+        "@nrwl/angular:application": {
+            "style": "scss",
+            "linter": "eslint",
+            "unitTestRunner": "jest",
+            "e2eTestRunner": "cypress"
+        },
+        "@nrwl/angular:library": {
+            "style": "scss",
+            "linter": "eslint",
+            "unitTestRunner": "jest"
+        },
+        "@nrwl/angular:component": {
+            "style": "scss"
+        }
     },
-    "@nrwl/angular:library": {
-      "style": "scss",
-      "linter": "eslint",
-      "unitTestRunner": "jest"
-    },
-    "@nrwl/angular:component": {
-      "style": "scss"
-    }
-  },
-  "projects": {
-    "yt-player-angular-app": {
-      "projectType": "application",
-      "root": "apps/yt-player-angular-app",
-      "sourceRoot": "apps/yt-player-angular-app/src",
-      "prefix": "yt-player-angular-app",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist/apps/yt-player-angular-app",
-            "index": "apps/yt-player-angular-app/src/index.html",
-            "main": "apps/yt-player-angular-app/src/main.ts",
-            "polyfills": "apps/yt-player-angular-app/src/polyfills.ts",
-            "tsConfig": "apps/yt-player-angular-app/tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "apps/yt-player-angular-app/src/favicon.ico",
-              "apps/yt-player-angular-app/src/assets"
-            ],
-            "styles": ["apps/yt-player-angular-app/src/styles.scss"],
-            "scripts": []
-          },
-          "configurations": {
-            "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+    "projects": {
+        "yt-player-angular-app": {
+            "projectType": "application",
+            "root": "apps/yt-player-angular-app",
+            "sourceRoot": "apps/yt-player-angular-app/src",
+            "prefix": "yt-player-angular-app",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "dist/apps/yt-player-angular-app",
+                        "index": "apps/yt-player-angular-app/src/index.html",
+                        "main": "apps/yt-player-angular-app/src/main.ts",
+                        "polyfills": "apps/yt-player-angular-app/src/polyfills.ts",
+                        "tsConfig": "apps/yt-player-angular-app/tsconfig.app.json",
+                        "inlineStyleLanguage": "scss",
+                        "assets": [
+                            "apps/yt-player-angular-app/src/favicon.ico",
+                            "apps/yt-player-angular-app/src/assets"
+                        ],
+                        "styles": [
+                            "apps/yt-player-angular-app/src/styles.scss"
+                        ],
+                        "scripts": []
+                    },
+                    "configurations": {
+                        "production": {
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "500kb",
+                                    "maximumError": "1mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "2kb",
+                                    "maximumError": "4kb"
+                                }
+                            ],
+                            "fileReplacements": [
+                                {
+                                    "replace": "apps/yt-player-angular-app/src/environments/environment.ts",
+                                    "with": "apps/yt-player-angular-app/src/environments/environment.prod.ts"
+                                }
+                            ],
+                            "outputHashing": "all"
+                        },
+                        "development": {
+                            "buildOptimizer": false,
+                            "optimization": false,
+                            "vendorChunk": true,
+                            "extractLicenses": false,
+                            "sourceMap": true,
+                            "namedChunks": true
+                        }
+                    },
+                    "defaultConfiguration": "production"
                 },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "yt-player-angular-app:build:production"
+                        },
+                        "development": {
+                            "browserTarget": "yt-player-angular-app:build:development"
+                        }
+                    },
+                    "defaultConfiguration": "development"
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "yt-player-angular-app:build"
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "apps/yt-player-angular-app/src/**/*.ts",
+                            "apps/yt-player-angular-app/src/**/*.html"
+                        ]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/apps/yt-player-angular-app"],
+                    "options": {
+                        "jestConfig": "apps/yt-player-angular-app/jest.config.js",
+                        "passWithNoTests": true
+                    }
                 }
-              ],
-              "fileReplacements": [
-                {
-                  "replace": "apps/yt-player-angular-app/src/environments/environment.ts",
-                  "with": "apps/yt-player-angular-app/src/environments/environment.prod.ts"
+            }
+        },
+        "yt-player-angular-app-e2e": {
+            "root": "apps/yt-player-angular-app-e2e",
+            "sourceRoot": "apps/yt-player-angular-app-e2e/src",
+            "projectType": "application",
+            "architect": {
+                "e2e": {
+                    "builder": "@nrwl/cypress:cypress",
+                    "options": {
+                        "cypressConfig": "apps/yt-player-angular-app-e2e/cypress.json",
+                        "tsConfig": "apps/yt-player-angular-app-e2e/tsconfig.e2e.json",
+                        "devServerTarget": "yt-player-angular-app:serve:development"
+                    },
+                    "configurations": {
+                        "production": {
+                            "devServerTarget": "yt-player-angular-app:serve:production"
+                        }
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "apps/yt-player-angular-app-e2e/**/*.{js,ts}"
+                        ]
+                    }
                 }
-              ],
-              "outputHashing": "all"
-            },
-            "development": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
             }
-          },
-          "defaultConfiguration": "production"
         },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "configurations": {
-            "production": {
-              "browserTarget": "yt-player-angular-app:build:production"
-            },
-            "development": {
-              "browserTarget": "yt-player-angular-app:build:development"
+        "yt-player-angular": {
+            "projectType": "library",
+            "root": "libs/yt-player-angular",
+            "sourceRoot": "libs/yt-player-angular/src",
+            "prefix": "yt-player-angular-app",
+            "architect": {
+                "build": {
+                    "builder": "@nrwl/angular:package",
+                    "options": {
+                        "project": "libs/yt-player-angular/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "libs/yt-player-angular/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "libs/yt-player-angular/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/yt-player-angular"],
+                    "options": {
+                        "jestConfig": "libs/yt-player-angular/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/yt-player-angular/src/**/*.ts",
+                            "libs/yt-player-angular/src/**/*.html"
+                        ]
+                    }
+                }
             }
-          },
-          "defaultConfiguration": "development"
         },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "yt-player-angular-app:build"
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "apps/yt-player-angular-app/src/**/*.ts",
-              "apps/yt-player-angular-app/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/yt-player-angular-app"],
-          "options": {
-            "jestConfig": "apps/yt-player-angular-app/jest.config.js",
-            "passWithNoTests": true
-          }
+        "yt-player": {
+            "projectType": "library",
+            "root": "libs/yt-player",
+            "sourceRoot": "libs/yt-player/src",
+            "prefix": "yt-player-angular-app",
+            "architect": {
+                "build": {
+                    "builder": "@nrwl/angular:package",
+                    "options": {
+                        "project": "libs/yt-player/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "libs/yt-player/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "libs/yt-player/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/yt-player"],
+                    "options": {
+                        "jestConfig": "libs/yt-player/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/yt-player/src/**/*.ts",
+                            "libs/yt-player/src/**/*.html"
+                        ]
+                    }
+                }
+            }
         }
-      }
-    },
-    "yt-player-angular-app-e2e": {
-      "root": "apps/yt-player-angular-app-e2e",
-      "sourceRoot": "apps/yt-player-angular-app-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/yt-player-angular-app-e2e/cypress.json",
-            "tsConfig": "apps/yt-player-angular-app-e2e/tsconfig.e2e.json",
-            "devServerTarget": "yt-player-angular-app:serve:development"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "yt-player-angular-app:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["apps/yt-player-angular-app-e2e/**/*.{js,ts}"]
-          }
-        }
-      }
-    },
-    "yt-player-angular": {
-      "projectType": "library",
-      "root": "libs/yt-player-angular",
-      "sourceRoot": "libs/yt-player-angular/src",
-      "prefix": "yt-player-angular-app",
-      "architect": {
-        "build": {
-          "builder": "@nrwl/angular:package",
-          "options": {
-            "project": "libs/yt-player-angular/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/yt-player-angular/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "libs/yt-player-angular/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/yt-player-angular"],
-          "options": {
-            "jestConfig": "libs/yt-player-angular/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/yt-player-angular/src/**/*.ts",
-              "libs/yt-player-angular/src/**/*.html"
-            ]
-          }
-        }
-      }
-    },
-    "yt-player": {
-      "projectType": "library",
-      "root": "libs/yt-player",
-      "sourceRoot": "libs/yt-player/src",
-      "prefix": "yt-player-angular-app",
-      "architect": {
-        "build": {
-          "builder": "@nrwl/angular:ng-packagr-lite",
-          "options": {
-            "project": "libs/yt-player/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/yt-player/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "libs/yt-player/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/yt-player"],
-          "options": {
-            "jestConfig": "libs/yt-player/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/yt-player/src/**/*.ts",
-              "libs/yt-player/src/**/*.html"
-            ]
-          }
-        }
-      }
     }
-  }
 }
