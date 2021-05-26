@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { PlayerOptions } from '@libs/domain';
-import { YouTubePlayer } from '@libs/yt-player';
+import { PlayerOptions } from '../../domain';
+import { YouTubePlayer } from '../../yt-player';
 
 @Injectable({
     providedIn: 'root',

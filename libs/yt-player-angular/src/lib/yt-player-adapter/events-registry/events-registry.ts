@@ -1,10 +1,9 @@
 import { Injectable, Optional, NgZone } from '@angular/core';
 import { Subject } from 'rxjs';
-import { YtPlayerEvent, YouTubePlayer } from '@libs/yt-player';
-import { StateChange, StateChangeType } from '@libs/domain';
-import { YtPlayerAdapterModule } from '../yt-player-adapter.module';
+import { YtPlayerEvent, YouTubePlayer } from '../../yt-player';
+import { StateChange, StateChangeType } from '../../domain';
 
-@Injectable({ providedIn: YtPlayerAdapterModule })
+@Injectable({ providedIn: 'root' })
 export class EventsRegistry {
     public stateChange$ = new Subject<StateChange>();
 

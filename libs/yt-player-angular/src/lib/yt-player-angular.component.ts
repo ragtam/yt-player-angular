@@ -10,8 +10,8 @@ import {
     EventEmitter,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { IdGeneratorService, QueueService } from '@libs/utils';
-import { StateChange, PlayerOptions } from '@libs/domain';
+import { PlayerOptions, StateChange } from './domain';
+import { IdGeneratorService, QueueService } from './utils';
 import { YtPlayerService } from './yt-player-adapter/yt-player.service';
 
 @Component({

@@ -1,4 +1,4 @@
-import { PlaybackQuality } from '@libs/domain';
+import { PlaybackQuality } from '../../domain';
 
 const m = new Map();
 

@@ -1,18 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { YouTubePlayer } from '@libs/yt-player';
+import { YouTubePlayer } from '../yt-player';
 import {
     PlayerMethods,
     StateChange,
     PlaybackQuality,
     PlayerState,
     PlayerOptions,
-} from '@libs/domain';
-import { YtPlayerAdapterModule } from './yt-player-adapter.module';
+} from '../domain';
 import { EventsRegistry } from './events-registry/events-registry';
 import { YtPlayerWrapperService } from './yt-player-wrapper/yt-player-wrapper.service';
 
-@Injectable({ providedIn: YtPlayerAdapterModule })
+@Injectable({ providedIn: 'root' })
 export class YtPlayerService implements PlayerMethods {
     public get stateChange$(): Observable<StateChange> {
         return this.eventsRegistry.stateChange$.asObservable();

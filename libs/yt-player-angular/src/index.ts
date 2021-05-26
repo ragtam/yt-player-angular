@@ -8,4 +8,4 @@ export {
     PlaybackQuality,
     StateChange,
     StateChangeType,
-} from '@libs/domain';
+} from './lib/domain';
