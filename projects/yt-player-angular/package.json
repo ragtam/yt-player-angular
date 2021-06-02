@@ -1,6 +1,6 @@
 {
   "name": "yt-player-angular",
-  "version": "1.0.4",
+  "version": "5.1.0",
   "peerDependencies": {
     "@angular/common": "~10.1.6",
     "@angular/core": "~10.1.6",
