@@ -1,5 +1,5 @@
 /*
-yt-player. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> 
+yt-player. MIT License. Feross Aboukhadijeh <https://feross.org/opensource>
 
 The MIT License (MIT)
 
@@ -23,7 +23,7 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 import { EventEmitter } from 'events';
-import loadScript from 'load-script2';
+import { loadScript } from './script-loader';
 
 const YOUTUBE_IFRAME_API_SRC = 'https://www.youtube.com/iframe_api';
 
@@ -161,7 +161,9 @@ export class YouTubePlayer extends EventEmitter {
   }
 
   public load(videoId, autoplay = false, start = 0) {
-    if (this.destroyed) return;
+    if (this.destroyed) {
+      return;
+    }
 
     this.videoId = videoId;
     this._autoplay = autoplay;
@@ -169,7 +171,9 @@ export class YouTubePlayer extends EventEmitter {
 
     // If the Iframe API is not ready yet, do nothing. Once the Iframe API is
     // ready, `load(this.videoId)` will be called.
-    if (!this._api) return;
+    if (!this._api) {
+      return;
+    }
 
     // If there is no player instance, create one.
     if (!this._player) {
@@ -180,7 +184,9 @@ export class YouTubePlayer extends EventEmitter {
     // If the player instance is not ready yet, do nothing. Once the player
     // instance is ready, `load(this.videoId)` will be called. This ensures that
     // the last call to `load()` is the one that takes effect.
-    if (!this._ready) return;
+    if (!this._ready) {
+      return;
+    }
 
     // If the player instance is ready, load the given `videoId`.
     if (autoplay) {
@@ -191,28 +197,43 @@ export class YouTubePlayer extends EventEmitter {
   }
 
   public play() {
-    if (this._ready) this._player.playVideo();
-    else this._queueCommand('play');
+    if (this._ready) {
+      this._player.playVideo();
+    } else {
+      this._queueCommand('play');
+    }
   }
 
   public pause() {
-    if (this._ready) this._player.pauseVideo();
-    else this._queueCommand('pause');
+    if (this._ready) {
+      this._player.pauseVideo();
+    } else {
+      this._queueCommand('pause');
+    }
   }
 
   public stop() {
-    if (this._ready) this._player.stopVideo();
-    else this._queueCommand('stop');
+    if (this._ready) {
+      this._player.stopVideo();
+    } else {
+      this._queueCommand('stop');
+    }
   }
 
   public seek(seconds) {
-    if (this._ready) this._player.seekTo(seconds, true);
-    else this._queueCommand('seek', seconds);
+    if (this._ready) {
+      this._player.seekTo(seconds, true);
+    } else {
+      this._queueCommand('seek', seconds);
+    }
   }
 
   public setVolume(volume) {
-    if (this._ready) this._player.setVolume(volume);
-    else this._queueCommand('setVolume', volume);
+    if (this._ready) {
+      this._player.setVolume(volume);
+    } else {
+      this._queueCommand('setVolume', volume);
+    }
   }
 
   public getVolume() {
@@ -220,13 +241,19 @@ export class YouTubePlayer extends EventEmitter {
   }
 
   public mute() {
-    if (this._ready) this._player.mute();
-    else this._queueCommand('mute');
+    if (this._ready) {
+      this._player.mute();
+    } else {
+      this._queueCommand('mute');
+    }
   }
 
   public unMute() {
-    if (this._ready) this._player.unMute();
-    else this._queueCommand('unMute');
+    if (this._ready) {
+      this._player.unMute();
+    } else {
+      this._queueCommand('unMute');
+    }
   }
 
   public isMuted() {
@@ -234,18 +261,27 @@ export class YouTubePlayer extends EventEmitter {
   }
 
   public setSize(width, height) {
-    if (this._ready) this._player.setSize(width, height);
-    else this._queueCommand('setSize', width, height);
+    if (this._ready) {
+      this._player.setSize(width, height);
+    } else {
+      this._queueCommand('setSize', width, height);
+    }
   }
 
   public setPlaybackRate(rate) {
-    if (this._ready) this._player.setPlaybackRate(rate);
-    else this._queueCommand('setPlaybackRate', rate);
+    if (this._ready) {
+      this._player.setPlaybackRate(rate);
+    } else {
+      this._queueCommand('setPlaybackRate', rate);
+    }
   }
 
   public setPlaybackQuality(suggestedQuality) {
-    if (this._ready) this._player.setPlaybackQuality(suggestedQuality);
-    else this._queueCommand('setPlaybackQuality', suggestedQuality);
+    if (this._ready) {
+      this._player.setPlaybackQuality(suggestedQuality);
+    } else {
+      this._queueCommand('setPlaybackQuality', suggestedQuality);
+    }
   }
 
   public getPlaybackRate() {
@@ -279,7 +315,7 @@ export class YouTubePlayer extends EventEmitter {
     this._destroy();
   }
 
-  public on(event: string | symbol, listener: (...args: any[]) => void): this {
+  public on(event: string, listener: (...args: any[]) => void): this {
     return super.on(event, listener);
   }
 
