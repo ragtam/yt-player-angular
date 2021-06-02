@@ -12,7 +12,7 @@
     "test-lib": "ng test yt-player-angular --watch=false --source-map=false --browsers=ChromeHeadless",
     "build-app": "ng build yt-player-angular-app --prod --base-href https://ragtam.github.io/yt-player-angular/",
     "publish-lib": "ng build yt-player-angular --prod && cd dist/yt-player-angular/ && npm publish --access public",
-    "x": "ng build yt-player-angular-app --output-path docs --prod --base-href https://ragtam.github.io/yt-player-angular/"
+    "deploy-app": "ng build yt-player-angular-app --output-path docs --prod --base-href https://ragtam.github.io/yt-player-angular/"
   },
   "private": true,
   "dependencies": {
@@ -24,10 +24,11 @@
     "@angular/platform-browser": "~10.1.6",
     "@angular/platform-browser-dynamic": "~10.1.6",
     "@angular/router": "~10.1.6",
+    "@types/events": "^3.0.0",
     "bootstrap": "^4.5.3",
+    "load-script2": "^2.0.6",
     "rxjs": "~6.6.3",
     "tslib": "^2.0.0",
-    "yt-player": "^3.4.3",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

@@ -9,7 +9,7 @@ describe('YtPlayerService', () => {
   beforeEach(() => TestBed.configureTestingModule({
     providers: [ YtPlayerService, EventsRegistry ]
   }));
-  beforeEach(() => service = TestBed.get(YtPlayerService));
+  beforeEach(() => service = TestBed.inject(YtPlayerService));
 
   it('should be created', () => {
     expect(service).toBeTruthy();

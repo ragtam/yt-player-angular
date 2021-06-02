@@ -2,40 +2,15 @@
 
 # Yt-Player-Angular
 
-This package is an Angular wrapper for [yt-player](https://www.npmjs.com/package/yt-player), YouTube Player API.
+This package is an Angular wrapper for YouTube Player API.
 
 Lets you embed Youtube video and control it ( play/pause/seek and many more ) programatically.
-
-Latest version supports **Angular 10**. :metal:
-
-Ver. 4.x.x => Angular 9; Ver. 3.x.x => Angular 8.
-
----
-
-**yt-player** package is exported as a **commonJS** module. Due to that fact Angular 10 is going to throw a warning at build time about optimization bailouts. You can switch that off by adding 'allowedCommonJsDependencies' to build options located in angular.json file in your project.
-
-```
-"options": {
-            "allowedCommonJsDependencies": ["yt-player"],
-            ...
-          }
-```
-
-You can read more about that [here](https://angular.io/guide/build#configuring-commonjs-dependencies)
 
 ## Demo
 
 Go <a href="https://ragtam.github.io/yt-player-angular/">there</a> to see it working.
 
-## Install
-
-First, you need to install **yt-player** from NPM:
-
-```
-npm install yt-player
-```
-
-Then do the same for **yt-player-angular**:
+## Installation
 
 ```
 npm install yt-player-angular
@@ -43,13 +18,14 @@ npm install yt-player-angular
 
 ## Basic Usage
 
-Add YtPlayerAngularModule to `imports` array in your `app.module.ts`:
+Add `YtPlayerAngularModule` to `imports` array in your `app.module.ts`:
 
 ```
 import { YtPlayerAngularModule } from 'yt-player-angular';
 
 @NgModule({
   imports: [
+    //...
     YtPlayerAngularModule
   ]
 ...
@@ -187,3 +163,17 @@ Cued,
 QualityChanged, // StateChange with payload containing applied quality: PlaybackQuality
 RateChanged     // StateChange with payload containing applied rate: number
 ```
+
+### Typescript Strict Mode
+
+If used in strict mode, you might need to install typings for 'Events'
+
+```
+npm install @types/events
+```
+
+### Change Log
+
+- removed yt-player and loadScript2 dependencies,
+- fix of warning about optimization bailouts for CommonJS modules,
+- fix of [strict mode issue](https://github.com/ragtam/yt-player-angular/issues/11) raised by [RobotCherries](https://github.com/RobotCherries)
